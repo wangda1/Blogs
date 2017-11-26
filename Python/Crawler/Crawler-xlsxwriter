@@ -1,0 +1,40 @@
+这里记录一下Python中绘制Excel表格的模块:xlsxwriter:
+
+1.上代码:
+	
+	import xlsxwriter
+
+	workbook = xlsxwriter.Workbook('Excel01.xlsx')       #建立一个workbook文件，最后不要忘记关闭
+	worksheet = workbook.add_worksheet()			#建立工作表
+
+	expenses = (
+		['rent',1000],
+		['Gas',100],
+		['Food',300],
+		['Gym',50],
+		)
+
+	row = 0
+	col = 0
+
+	for item,cost in expenses:
+
+	    worksheet.write(row,col,item)		#通过write函数进行表格的写入操作
+	    worksheet.write(row,col+1,cost)
+	    row +=1
+
+	worksheet.write(row,0,'Total')			#求和
+	worksheet.write(row,1,'=SUM(B1:B4)')
+
+	workbook.close()
+
+
+
+特别的，write(row,col,item):row = 0,col = 0,时表示第一行第一列；
+	write('A1','item'),向A1写入字符串item
+
+2.另外的一些方法:
+	worksheet.set_column('A:A',10)   #设置表格列宽，单位：像素
+
+
+

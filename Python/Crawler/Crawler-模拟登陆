@@ -1,0 +1,55 @@
+这里介绍一下爬虫中常见的一类问题，就是模拟登陆的问题:
+
+	
+		1.首先会新建一个会话对象Session,会话对象会把同一用户的不同请求联系起来，并且会自动地处理Cookie文件；
+
+		import requests
+		import http.cookiejar
+
+  
+		headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:48.0) Gecko/20100101 Firefox/48.0'}
+		#至于这里headers的作用，则是在有些模拟时需要提供header信息
+
+		filename = 'cookie'
+
+	一.处理登录过程中的cookie的问题(加载):
+
+		Cookie，指某些网站为了辨别用户身份、进行session跟踪而储存在用户本地终端上的数据（通常经过加密）;
+
+
+
+
+
+
+
+
+
+
+
+
+		# 建立一个会话，可以把同一用户的不同请求联系起来；直到会话结束都会自动处理cookies
+		session = requests.Session()
+		# 建立LWPCookieJar实例，可以存Set-Cookie3类型的文件。
+		# 而MozillaCookieJar类是存为'/.txt'格式的文件
+		session.cookies = http.cookiejar.LWPCookieJar(filename)
+		# 若本地有cookie则不用再post数据了
+		try:
+		    session.cookies.load(filename=filename, ignore_discard=True)
+		except:
+		    print('Cookie未加载！')
+
+
+	二.填写webforms，进行post请求：
+
+		webforms的获取可以通过fiddler方式来得到webforms里的相关数据，来填写表单，进行请求；
+
+		data = requests.session.post(url,data = payload,verify = True/False)    #其中verify用来绕过ssl验证
+		data.status_code						#用于打印状态码
+
+		
+
+	三.处理登录过程中可能遇到的验证码的问题:
+
+		大致思路是：通过分析验证码图片url进而通过输入识别验证码进行登陆；
+
+		

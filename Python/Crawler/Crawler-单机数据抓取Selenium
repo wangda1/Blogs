@@ -1,0 +1,86 @@
+单机数据抓取的实现:
+		与分布式数据相比，单机数据抓取，速度快，容易部署；
+		使用Spynner的原因：
+				1.抓取时弹出浏览器，观察到浏览器的变化；
+				2.可以进行动态抓取，加载Javascript内容，这是使用requests方法所不能实现的；
+
+但是Spynner需要安装PyQt,并没有选择这种方式，而是选择了一种功能更加齐全，应用于自动化领域的一个第三方模块，Selenium，进行单机与分布式数据抓取：
+
+	Selenium的一些特点：
+		1.能抓取动态网页的内容，并对浏览器行为可以控制，控制CSS,Js,及图片的加载；
+		2.使用get方式请求；
+		3.不能进行图片的下载（但是能够加载），图片的下载可以通过requests模块进行实现；
+
+	使用Selenium抓取过程中的大致流程:
+
+		1.引入模块:from selenium import webdriver
+		2.实例化一个浏览器窗口:firefox = webdriver.Firefox();(在此当初实现时遇到了些bug
+		  主要是因为浏览器驱动问题，从知乎上找到解决办法是下载新的浏览器驱动:mv /usr/local/bin）
+		3.调用一些方法：
+			firefox.get('url');通过get请求方式；
+			firefox.page_source得到网页源代码;
+			当加载动态网页时，需要firefox.execute_script()执行js代码，显示动态网页；
+			firefox.maximize_window()浏览器全屏；
+			firefox.quit()退出浏览器界面
+		4.将抓取的内容写入文件以便进一步解析
+
+关于在无图形界面下的使用：
+	http://jayi.leanote.com/post/Linux-%E6%97%A0%E7%95%8C%E9%9D%A2%E4%BD%BF%E7%94%A8-selenium
+
+	Xvfb:virtual framebuffer X server for X Version 11
+
+	Xvfb官方文档:https://www.x.org/archive/X11R7.6/doc/man/man1/Xvfb.1.xhtml
+	安装(Centos):
+		1.yum install Xvfb
+		2.yum install firefox
+		3.yum install xorg-x11-fonts*
+
+		使用:
+		nohup Xvfb -ac :7 -screen 0 1280x1024x8 2 > /dev/null 2>&1 &
+		export DISPLAY=:7
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			
+

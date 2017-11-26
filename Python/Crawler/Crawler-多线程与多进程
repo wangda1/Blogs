@@ -1,0 +1,143 @@
+学习一下爬虫抓取的多线程与多进程的情况，以便提高抓取速度与抓取效率；
+
+链接网址:
+
+http://python.jobbole.com/81544/
+http://python.jobbole.com/81546/
+
+http://www.cnblogs.com/tkqasn/p/5701230.html
+
+
+	线程由于处于一个进程中，较容易实现资源的共享；
+	进程由于拥有自己独立的内存空间，进程之间的资源共享不容易实现；
+
+首先需要明白同步与异步，并发与并行的相关概念：
+
+	并发：在一段时间内发生的若干个事件；   并行：在同一时刻发生的若干个事件；
+	同步：事件的结果之间相互影响，相互作用；    异步：事件的相互之间没有什么影响；
+
+	多线程:在这里Python的多线程指的是单核上的并发异步执行；
+
+		模块:threading
+		方法:thread = threading.Thread( group=None, target=None, name=None, args=(), kwargs={})
+		参数:group为预留，target是要执行的函数，注意：这里是函数名称，不加（），name为线程名称，args为执行函数的参数，元组类型，kwargs为执行函数的关键字;
+		     当args=仅有一个参数时,应当写成args = (args1,)的形式，因为args = (args1)会被误认为一个整数
+		     
+		     thread.join([timeout])为阻塞主调线程，直到被调用线程运行结束或超时。参数timeout是一个数值类型，表示超时时间，如果未提供该参数，那么主调线程将一直堵塞到被调线程结束；
+		     thread.start()为开始调用线程，一般后续会紧跟thread.join()为了使线程执行完毕再退出函数；
+
+		     threading.Lock()锁，用于占用资源所用;lock.acquire([waitflag])获取锁，lock.release()释放锁
+		关于锁的运用:
+		    #coding: utf-8  
+
+		    import  threading    
+		    import  time    
+			 
+		    counter = 0  
+		    counter_lock = threading.Lock() #只是定义一个锁,并不是给资源加锁,你可以定义多个锁,像下两行代码,当你需要占用这个资源时，任何一个锁都可以锁这个资源  
+		    counter_lock2 = threading.Lock()   
+		    counter_lock3 = threading.Lock()  
+		      
+		    #可以使用上边三个锁的任何一个来锁定资源  
+		       
+		    class  MyThread(threading.Thread):#使用类定义thread，继承threading.Thread  
+			 def  __init__(self,name):    
+			    threading.Thread.__init__(self)    
+			    self.name = "Thread-" + str(name)  
+			 def run(self):   #run函数必须实现  
+			     global counter,counter_lock #多线程是共享资源的，使用全局变量  
+			     time.sleep(1);    
+			     if counter_lock.acquire(): #当需要独占counter资源时，必须先锁定，这个锁可以是任意的一个锁，可以使用上边定义的3个锁中的任意一个  
+				counter += 1     
+				print "I am %s, set counter:%s"  % (self.name,counter)    
+				counter_lock.release() #使用完counter资源必须要将这个锁打开，让其他线程使用  
+				  
+		    if  __name__ ==  "__main__":    
+			for i in xrange(1,101):    
+			    my_thread = MyThread(i)  
+			    my_thread.start()  
+
+
+	多进程:Python中多进程是利用多核进行并行执行的，
+		库:multuiprocessing
+		方法:
+			cpu_count()可以获得cpu可用的核数;
+		
+
+
+
+		Pool(进程池)对象:
+
+			pool = multiprocessing.Pool(processes = )
+			processes使用的工作进程的数量，如果processes是None那么使用 os.cpu_count()返回的数量；
+
+			pool.apply_async(		)
+			pool.close()
+			pool.join()
+
+
+			apply(func[, args[, kwds]])：同步进程池
+
+			apply_async(func[, args[, kwds[, callback[, error_callback]]]]) ：异步进程池
+
+			close() ： 关闭进程池，阻止更多的任务提交到pool，待任务完成后，工作进程会退出。
+
+			terminate() ： 结束工作进程，不在处理未完成的任务
+
+			join() : wait工作线程的退出，在调用join()前，必须调用close() or terminate()。这样是因为被终止的进程需要被父进程调用wait（join等价与wait），否则进程会成为僵尸进程。
+			
+
+异步进程池的使用实例:
+
+	# coding:utf-8
+	from  multiprocessing import Pool
+	import time
+
+
+	def Foo(i):
+	    time.sleep(2)
+	    return i + 100
+
+	def Bar(arg):
+	    print arg
+
+	if __name__ == '__main__':
+	    t_start=time.time()
+	    pool = Pool(5)
+
+	    for i in range(10):
+		pool.apply_async(func=Foo, args=(i,), callback=Bar)#维持执行的进程总数为processes，当一个进程执行完毕后会添加新的进程进去
+
+	    pool.close()
+	    pool.join()  # 进程池中进程执行完毕后再关闭，如果注释，那么程序直接关闭。
+	    pool.terminate()
+	    t_end=time.time()
+	    t=t_end-t_start
+	    print 'the program time is :%s' %t
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

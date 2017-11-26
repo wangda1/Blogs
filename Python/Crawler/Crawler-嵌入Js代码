@@ -1,0 +1,11 @@
+积累一些在爬取网页过程中需要知道的一些javascript代码：
+
+
+	1.动态网页的显示:
+		document.body.scrollHeight表示页面滚动条高度，这是一个常用的参数;
+		window.scrollTo(Xpos,Ypos):表示滚动条滚动的位置，这里的Xpos,Ypos分别以左上角的x,y坐标进行表示（单位为px);
+	  常用显示动态网页的Python代码:
+	  for i in range(1,n):
+		s = "window.scrollTo(0,(document.body.scrollHeight/n)*i)
+		time.sleep(2)		#动态网页加载保留时间
+	  将滚动条分为n各部分进行滚动

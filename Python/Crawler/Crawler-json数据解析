@@ -1,0 +1,111 @@
+Json:(Javascript Object Notation)Javasript的对象表示法；
+	Json是存储和交换文本信息的语法，类似xml,轻量级的文本数据交换格式；
+	Javascript能通过内建的eval()函数将Json转换成Javascript对象；
+
+	JSON 值
+	JSON 值可以是：
+
+	    数字（整数或浮点数）
+	    字符串（在双引号中）
+	    逻辑值（true 或 false）
+	    数组（在方括号中）
+	    对象（在花括号中）
+	    null
+
+	数据书写格式：名称/值对：
+	{
+		"employees": [
+		{ "firstName":"John" , "lastName":"Doe" },
+		{ "firstName":"Anna" , "lastName":"Smith" },
+		{ "firstName":"Peter" , "lastName":"Jones" }
+		]
+	}
+
+
+
+运用:
+
+	直接请求Json数据文件也是一种较为方便的形式；
+
+
+示例：通过开发者工具找到其Json文件的包，进行解析；
+
+	以全国高校信息综合查询网为例:http://gkcx.eol.cn/soudaxue/queryProvince.html?
+	page=1&recomprovince=%E6%B2%B3%E5%8D%97&recomluqutype=%E6%96%87%E7%A7%91&recomluqupici=%E6%9C%AC%E7%A7%91%E4%B8%80%E6%89%B9
+
+	找到Json请求包：
+
+	请求信息:
+		请求网址:http://data.api.gkcx.eol.cn/soudaxue/queryProvince.html?
+		messtype=jsonp&url_sign=queryprovince&province3=河南&year3=&page=1&size=10&luqutype3=文科&luqupici3=本科一批	
+		&schoolsort=&suiji=&callback=jQuery18301241266127913081_1488689322371&_=1488689323738
+
+		请求参数：
+		
+
+		请求方式:	get
+	requests.get("url",params=[]).json()
+
+
+常用方法:需要注意的是json数据之间的嵌套层次，这是在解析数据时应该注意的。
+	json.loads():将json文件的数据成Python的数据结构
+
+	json.dump():将Python数据结构转换成json文件数据
+
+	代码示例:
+
+	if __name__ == '__main__':
+	    # 将python对象test转换json对象
+	    test = [{"username":"测试","age":16},(2,3),1]
+	    print type(test)
+	    python_to_json = json.dumps(test,ensure_ascii=False)
+	    print python_to_json
+	    print type(python_to_json)
+
+	    # 将json对象转换成python对象
+	    json_to_python = json.loads(python_to_json)
+	    print json_to_python
+	    print type(json_to_python)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
