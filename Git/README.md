@@ -21,7 +21,8 @@ git add .
 git commit -m [message]
 ```
 
-然后 push `git push -u origin master`  嘻嘻，报错，报错信息类似这样：       ```
+然后 push `git push -u origin master`  嘻嘻，报错，报错信息类似这样：      
+```
 To https://github.com/USERNAME/REPOSITORY.git
  ! [rejected]        master -> master (non-fast-forward)
 error: failed to push some refs to 'https://github.com/USERNAME/REPOSITORY.git'
