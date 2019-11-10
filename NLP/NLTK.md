@@ -8,6 +8,16 @@ NLTK 是最为知名的Python自然语言处理工具之一，全程：Natural L
 - http://www.zmonster.me/2016/06/08/use-stanford-nlp-package-in-nltk.html
 - http://www.cnblogs.com/baiboy/p/nltk1.html
 
+## 官方资料学习 https://www.nltk.org/book/
+
+### 7. Extracting Information from Text
+
+#### 7.5 Named Entity Recognition
+
+对命名实体识别中的一些词语进行解释：
+- `Facility` : human-made artifacts in the domains of architecture and civil engineering
+- `GPE` : geo-political entities such as city, state/province, and country
+
 
 ## 学习资料
 
