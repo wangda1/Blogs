@@ -1,0 +1,4 @@
+﻿  Building Custom Rule C:/Users/chenxuwa/Desktop/how-to-use-cmake/tutorial/CMakeLists.txt
+  CMake does not need to re-run because C:/Users/chenxuwa/Desktop/how-to-use-cmake/tutorial/build/CMakeFiles/generate.stamp is up-to-date.
+  tutorial.cpp
+  Tutorial.vcxproj -> C:\Users\chenxuwa\Desktop\how-to-use-cmake\tutorial\build\Debug\Tutorial.exe

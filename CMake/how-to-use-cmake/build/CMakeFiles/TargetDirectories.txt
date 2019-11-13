@@ -1,0 +1,2 @@
+C:/Users/chenxuwa/Desktop/how-to-use-cmake/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/chenxuwa/Desktop/how-to-use-cmake/build/CMakeFiles/ZERO_CHECK.dir
