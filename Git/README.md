@@ -51,3 +51,7 @@ Merge the remote changes (e.g. 'git pull') before pushing again.  See the
 3.
 - git push origin master -f
 强推！！！当然了这一推远程库就被更改地与你一致了。:)不建议
+
+## Misc
+
+1. `github.com` 的链接可以使用锚链接了！！ `https://github.com/python/cpython/blob/2.7/Python/bltinmodule.c#L1580` 指示在该 `.c` 文件的 1580 行
