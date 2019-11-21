@@ -15,7 +15,7 @@
 ### cs224n
 
 课程主页：http://web.stanford.edu/class/cs224n/index.html#schedule
-视频地址：https://www.youtube.com/watch?v=8rXD5-xhemo
+视频地址：https://www.youtube.com/playlist?list=PLoROMvodv4rOhcuXMZkNm7j3fVwBBY42z
 
 
 1. Introduction and Word Vectors, Gensim word vectors example:
