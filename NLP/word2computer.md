@@ -1,6 +1,11 @@
 # Introduction of Bert, ELMO, GPT
 
-## 传统的 encoding 方式
+## 结构
+
+- 传统的 encoding 方式
+- 现在的 word embedding 的几种方式
+
+## 1. 传统的 encoding 方式
 
 - 1-of-N encoding
 
@@ -20,18 +25,18 @@
 
 ![word2com](./IMG/word2com_3.png)
 
-## ELMO
+## 2. ELMO
 
 Embeddings from Language Model (ELMO)
 
-### RNN-based ELMO
+### 2.1 RNN-based ELMO
 
 - RNN-based language model
 - 不需要标注数据，直接 trainning
 
 ![elmo](./IMG/word2com_4.png)
 
-### LSTM-based ELMO
+### 2.2 LSTM-based ELMO
 
 - 考虑进正向及反向的 contex 信息
 
@@ -43,7 +48,7 @@ Embeddings from Language Model (ELMO)
 
 ![elmo](./IMG/word2com_6.png)
 
-## BERT
+## 3. BERT
 
 **Encoder of Transformer**
 
@@ -51,7 +56,7 @@ Embeddings from Language Model (ELMO)
 
 *在中文中，也许使用 character 更为有效*
 
-### Training of Bert
+### 3.1 Training of Bert
 
 - Approach 1: Masked LM
 
@@ -61,7 +66,7 @@ Embeddings from Language Model (ELMO)
 
 ![bert_3](./IMG/bert_3.png)
 
-### How to use Bert
+### 3.2 How to use Bert
 
 - 把 bert 的训练和下游的任务放在一起进行 train
 
@@ -83,30 +88,29 @@ Embeddings from Language Model (ELMO)
 
 ![bert_case_3](./IMG/bert_6.png)
 
-
 #### case4: Extraction-based QA
 
 ![bert_case_4](./IMG/bert_7.png)
 
 ![bert_case_4](./IMG/bert_8.png)
 
-### 中文版本的 bert -- Erine
+### 3.3 中文版本的 bert -- Erine
 
 ![erine](./IMG/erine.png)
 
-### What bert learns??
+### 3.4 What bert learns??
 
 研究者通过将 bert 24层的 embedding 输出对比发现， bert 的24层从低到高学习到了 NLP 的大部分过程：`文法->句法->语义`
 
 ![bert_9](./IMG/bert_9.png)
 
-### Multilingual Bert
+### 3.5 Multilingual Bert
 
 多语言的 bert，google 的研究者爬取104种语言的 wiki进行训练 多语言版本的 bert
 
 ![bert_10](./IMG/bert_10.png)
 
-## GPT
+## 4. GPT
 
 **Generative Pre-Training**
 特别大特别大的一个预训练模型
@@ -125,6 +129,6 @@ GPT-2 model 特别巨大，能够在**没有训练资料**的情况下，做：
 
 GPT-2 OpenAI 最大的model 拥有的参数有 1542M，但考虑到到多种问题并没有被 release，release 的 model 的版本与 bert 差不多.
 
-### 例子
+## 例子
 
 - https://talktotransformer.com/
