@@ -4,9 +4,11 @@ Jupyter 通篇内容有两种格式：Markdown 与 code，Markdown 模式下可�
 
 ## Markdown 模式
 
+`shift`+`enter` 快捷键是个很重要的快捷键，在 Markdown 模式下使用则可以进行预览和编辑的切换
 
 ## Code 模式
 
+`shift`+`enter` 快捷键在 `code` 模式下可以进行代码的创建和运行
 
 ## 快捷键
 

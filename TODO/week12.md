@@ -40,6 +40,11 @@
 20. Safety, Bias, and Fairness
 21. Future of NLP + Deep Learning
 
+### Machine Learning 李宏毅
+
+视频地址： https://www.youtube.com/watch?v=CXgbekl66jc&list=PLJV_el3uVTsPy9oCRY30oBPNLCo89yu49
+
+
 ### Task：
 1. 《数值分析》每天2-3讲
 2. 《cs224n》 每天1讲
