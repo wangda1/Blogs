@@ -55,3 +55,8 @@ Merge the remote changes (e.g. 'git pull') before pushing again.  See the
 ## Misc
 
 1. `github.com` 的链接可以使用锚链接了！！ `https://github.com/python/cpython/blob/2.7/Python/bltinmodule.c#L1580` 指示在该 `.c` 文件的 1580 行
+
+2. 当出现 `Failed to connect to github.com port 443: Timed out` 的错误，是 http.proxy 的问题
+
+- `git config --global http.proxy (127.0.0.1:1080)`
+- `git config --get http.proxy`
