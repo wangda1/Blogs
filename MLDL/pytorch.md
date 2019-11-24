@@ -54,7 +54,7 @@ print(y_softplus)
 
 - `in_features` 每个输入样本的大小
 - `out_features` 每个输出样本的大小 
-0
+  
 $$y=Ax+b$$
 
 ### 5.2 `nn.Dropout(p=0.5, inplace=False)`
@@ -104,5 +104,10 @@ model = nn.Sequential(OrderedDict([
 
 $$loss(x,class) = -log{\frac{exp(x[class])}{\sum_{j}exp(x[j])}}$$
 
-
 ### 5.7 `nn.RNN()` 与 `nn.LSTM()` 中已经讲过参考 [RNN](./RNN.md)
+
+## 6. `torch.optim`
+
+`torch.optim` 是一个实现了各种优化算法的库。
+
+### 6.1 如何使用 `optimizer`
