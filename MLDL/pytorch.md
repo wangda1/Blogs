@@ -22,7 +22,7 @@ y.backward()
 pritn(x.grad)
 ```
 
-## 2 
+## 2. Dataset(数据集)
 
 ## 3. 激励函数
 
@@ -111,3 +111,41 @@ $$loss(x,class) = -log{\frac{exp(x[class])}{\sum_{j}exp(x[j])}}$$
 `torch.optim` 是一个实现了各种优化算法的库。
 
 ### 6.1 如何使用 `optimizer`
+
+为了使用 `torch.optim`，你需要构建一个 optimizer 对象，这个对象能够保持当前参数状态并基于计算得到的梯度进行参数更新。
+
+- 构建
+
+为了构建一个 `optimizer`，需要传入一个包含优化参数（必须都是 `Variable` 对象）的 iterable，并设置 optimizer 的参数选项，如：学习率、权重衰减等。
+
+```python
+optimizer = optim.SGD(model.parameters(), lr=0.01, )
+```
+
+- 进行单次优化
+
+采用的方法：
+
+`optimizer.step()` 这个方法会更新所有的参数，所有的 optimizer 都实现了这个方法，一旦梯度被 `backward()` 之类的函数计算好后，就可以调用这个函数。
+
+```python
+# 单次优化的常用做法
+for input, target in dataset:
+    optimizer.zero_grad()
+    output = model(input)
+    loss = loss_fn(output, target)
+    loss.backward()
+    optimizer.step()
+```
+
+### 6.2 常用函数
+
+- `step(closure)` 进行单次优化
+- `zero_grad()` 清空所有被优化过的 Variable 的梯度
+
+## 7. 参考
+
+- [PyTorch-官方教程](https://pytorch-cn.readthedocs.io/zh/latest/package_references/torch-optim/)
+
+
+

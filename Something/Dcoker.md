@@ -25,3 +25,4 @@ docker restart container-id
 ## 参考
 
 - [Docker,深度学习的环境配置](https://zhuanlan.zhihu.com/p/64493662)
+- [Docker 官方文档](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
