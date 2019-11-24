@@ -74,25 +74,33 @@
 | col 2 is      | centered      |   $12 |
 | zebra stripes | are neat      |    $1 |
 
-
 ## 代码引用
 
 > - 单段代码引用：用  \'  包括整个代码段显示为一个代码段  
 > - 多段代码引用：用  \'\'\'  置于代码段的首行与末行
 
+## 编写数学公式
 
+*参考：https://juejin.im/post/5a6721bd518825733201c4a2#heading-1*
 
+数学公式的编写类似于 Latex 中的用法，这里介绍一些常用的：
 
+- `$$\left(\sum_{k=\frac{1}{2}}^{N^2}\frac{1}{k}\right)$$`
 
+$$\left(\sum_{k=\frac{1}{2}}^{N^2}\frac{1}{k}\right)$$
 
+- `$$\left(\int_a^b\sqrt{2x}dx\right)$$`
 
+$$\left[\int_a^b\sqrt{2x}dx\right]$$
 
+```
+$$\begin{bmatrix}
+    1 & 2 \\\\
+    3 & 4
+\end{bmatrix}$$
+```
 
-
-
-
-
-
-
-
-
+$$\begin{bmatrix}
+    1 & 2 \\\\
+    3 & 4
+\end{bmatrix}$$
