@@ -22,6 +22,14 @@ y.backward()
 pritn(x.grad)
 ```
 
+### 1.1 `torch.max()`
+
+`torch.max()` 函数用于选出 tensor 中的最大值，用法如下：
+
+```python
+
+```
+
 ## 2. Dataset(数据集)
 
 ## 3. 激励函数
@@ -146,6 +154,3 @@ for input, target in dataset:
 ## 7. 参考
 
 - [PyTorch-官方教程](https://pytorch-cn.readthedocs.io/zh/latest/package_references/torch-optim/)
-
-
-

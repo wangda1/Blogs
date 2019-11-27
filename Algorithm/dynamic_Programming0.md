@@ -34,7 +34,8 @@
 
 
 ### 代码实现
-```
+
+```c++
 #include<iostream>
 
 using namespace std;

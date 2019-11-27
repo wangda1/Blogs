@@ -14,6 +14,18 @@
 通过计算 co-occurence frequency，并计算两个 vector 的 dot product，使其与 frequency 相似
 
 ![word_embedding](./IMG/word_emb_1.png)
+
+### 3.2 Count-based 的代表
+
+#### 3.2.1 LSA(Latent Semantic Analysis)
+
+#### 3.2.2 word2vec
+
+#### 3.2.3 GloVe(Global Vectors for word representation)
+
+*参考：http://www.fanyeong.com/2018/02/19/glove-in-detail/*
+
+> 它是一个基于 `全局词频统计` 的词表征（word representation）工具，它可以把一个单词表达成一个由实数组成的向量，这些向量捕捉到了单词之间的语义特性，比如：相似性（similarity）、类比性（analogy）等。我们通过对向量的运算，比如欧式距离或cosine相似度，可以计算出两个单词之间的语义相似性。
  
 ### 3.2 Prediction-based 
 
