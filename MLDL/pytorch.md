@@ -4,6 +4,35 @@
 
 *参考：《深度学习入门之PyTorch》*
 
+## 0. 基本数据类型
+
+### 0.1 数据类型
+
+`torch.Tensor` 默认是 `torch.FloatTensor`
+
+| Data tyoe	            | CPU tensor | GPU tensor |
+|-----------------------|------------|------------|
+| 32-bit floating point |torch.FloatTensor  |torch.cuda.FloatTensor
+| 64-bit floating point |torch.DoubleTensor	|torch.cuda.DoubleTensor
+|16-bit floating point	|N/A	              |torch.cuda.HalfTensor
+|8-bit integer (unsigned)|	torch.ByteTensor|	torch.cuda.ByteTensor
+|8-bit integer (signed)	|torch.CharTensor	  |torch.cuda.CharTensor
+|16-bit integer (signed) |torch.ShortTensor	|torch.cuda.ShortTensor
+|32-bit integer (signed) |torch.IntTensor	  |torch.cuda.IntTensor
+|64-bit integer (signed) |torch.LongTensor	|torch.cuda.LongTensor
+
+### 0.2 对 `torch.Tensor` 的操作方法
+
+- `tensor`可以由python中的 `list` 或序列创建
+- 也可以用python中的切片与索引来修改 `tensor` 中的内容
+- 会改变 `tensor` 的函数操作会带有下划线表示，例如：`abs_()`等
+
+`torch.max()` 函数用于选出 tensor 中的最大值，用法如下：
+
+```python
+
+```
+
 ## 1. Variable(变量)
 
 > Variable 是神经网络计算图里的概念，提供了自动求导的功能。Variable 和 Tensor 本质上没有区别，不过 Variable 会被放入一个计算图中，然后进行前向传播、反向传播、自动求导。
@@ -22,13 +51,16 @@ y.backward()
 pritn(x.grad)
 ```
 
-### 1.1 `torch.max()`
+### 1.1 Parameters
 
-`torch.max()` 函数用于选出 tensor 中的最大值，用法如下：
+`class torch.nn.Parameter()`
 
-```python
+`Variable` 的一种，常被用于模块参数 `module parameter`
 
-```
+`Variable` 与 `Parameter`  的不同：
+
+- `Parameters` 是 `Variable` 的子类。 当把 `Parameters` 赋值给 `Modules`的时候，会被自动加到 `Module` 的参数列表中（会出现在 `parameters()` 迭代器中）。将 `Variable` 赋值给 `Module` 属性则不会有这样的影响。
+- `Parameter` 不能被 `volatile`，且默认 `requires_grad=True`，`Variable`默认`requires_grad=False`
 
 ## 2. Dataset(数据集)
 
@@ -56,7 +88,7 @@ print(y_softplus)
 - `torch.LongTensor()`
 - `torch.optim.SGD()`
 
-## 5. `torch.nn` Module
+## 5. Containers（容器） `torch.nn` Module
 
 ### 5.1 `nn.Linear(in_features, out_features, bias=True)`
 
@@ -81,10 +113,27 @@ $$
 
 ### 5.4 `nn.Embedding(num_embeddings, embedding_dim, padding_idx=None, max_norm=None, norm_type=2, scale_grad_by_freq=False, sparse=False)`
 
-保存了固定字典和大小的简单查找表，该模块保存
+保存了固定字典和大小的简单查找表，该模块保存，这里只是初始化的一些向量，后续还需要进行学习和修改
 
 - `num_embeddings` 嵌入字典的大小
 - `embeddings_dim` 每个嵌入向量的大小
+
+```python
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+from torch.autograd import Variable
+
+word_to_idx = {'hello': 0 ,'world': 1}
+embeds = nn.Embedding(2, 5)
+hello_idx = torch.LongTensor([word_to_idx['hello']])
+hello_variable = Variable(hello_idx)
+hello_embed = embeds(hello_variable)
+print(hello_embed)
+
+embeds.weight.data = torch.ones(2, 5)   # embeddings 的 weight 可以设置
+print(embeds.weight)
+```
 
 ### 5.5 `nn.Sequential(*args)`
 
