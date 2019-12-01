@@ -2,17 +2,14 @@
 
 ## 1. 插入
 
-
 ## 2. 删除
 
-
-
 ## 3. 修改
-
 
 ## 4. 查询
 
 mongodb的查询分为两种：
+
 - 普通查询：类似于 sql 中的 `select where`
 - 聚合查询：类似于 sql 中的 `group by`
 
@@ -38,7 +35,6 @@ AND 与 OR 运算符的使用
 - 指定数据的数量：`limit(NUM)`
 - 跳过指定的数量：`skip(NUM)`
 
-
 ## 6. 使用 PyMongo
 
 在 Pymongo 中使用命令与 mongo 命令相同，少许对应关系：
@@ -47,6 +43,7 @@ AND 与 OR 运算符的使用
 - `false` <--> `False`
 
 ### 6.1 查询
+
 使用 Pymongo 进行查询的时候返回 `cursor` 对象，这是一个可迭代的对象
 
 - 查询字段是否为设置
@@ -67,10 +64,9 @@ AND 与 OR 运算符的使用
 - `update_one()` 更新一条记录 
 - `update_many()` 批量更新记录
 
-
 ```python
 import pymongo
- 
+
 myclient = pymongo.MongoClient("mongodb://localhost:27017/")
 mydb = myclient["runoobdb"]
 mycol = mydb["sites"]
