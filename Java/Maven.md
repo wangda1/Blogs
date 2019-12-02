@@ -65,20 +65,21 @@ mvn test-compile    # 测试代码的编译
 
 ```maven
 mvn test
+mvn test -Dtest=xxx.xxx.package_name    # 单个测试文件进行测试
 ```
 
 ### 4.4 打包
 
 ```maven
-mvn package         #　打包
-mvn jar:jar         #  打jar包
+mvn package             #　打包
+mvn jar:jar             #  打jar包
 ```
 
 ### 4.5 生成其他项目
 
 ```maven
-mvn idea:idea       # 生成IDEA项目
-mvn eclipse:eclipse # 生成eclipse项目
+mvn idea:idea           # 生成IDEA项目
+mvn eclipse:eclipse     # 生成eclipse项目
 ```
 
 ### 4.6 下载依赖包
@@ -90,7 +91,7 @@ mvn dependency:sources  #　下载依赖的源码包
 ### 4.7 清理
 
 ```maven
-mvn clean
+mvn clean               #  清除　target 目录
 ```
 
 ## 5. 参考
