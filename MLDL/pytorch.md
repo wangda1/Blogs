@@ -14,7 +14,7 @@
 |-----------------------|------------|------------|
 | 32-bit floating point |torch.FloatTensor  |torch.cuda.FloatTensor
 | 64-bit floating point |torch.DoubleTensor	|torch.cuda.DoubleTensor
-|16-bit floating point	|N/A	              |torch.cuda.HalfTensor
+|16-bit floating point  |N/A               |torch.cuda.HalfTensor
 |8-bit integer (unsigned)|	torch.ByteTensor|	torch.cuda.ByteTensor
 |8-bit integer (signed)	|torch.CharTensor	  |torch.cuda.CharTensor
 |16-bit integer (signed) |torch.ShortTensor	|torch.cuda.ShortTensor
@@ -29,15 +29,89 @@
 
 `torch.max()` 函数用于选出 tensor 中的最大值，用法如下：
 
-```python
+### 0.3 变换数据维度
 
+这里涉及到的总共有 3 种方法：
+
+*参考：https://zhuanlan.zhihu.com/p/76583143*
+
+- `Tensor.permute(a, b, c...)` 可以直接对高纬度矩阵进行转置操作
+- `torch.transpose()` 与 `permute()`作用相同，但只能操作两个维度
+- `Tensor.view()`; `view()` 仅能作用在连续的内存中，如果在调用了 `transpose()` 或 `permute()` 则可导致内存不连续，需要使用 `contiguous()`返回一个连续的内存拷贝；
+- `torch.reshape()` *version >=0.4*, `== tensor.contiguous().view()`
+
+```python
+import torch
+import numpy as np
+
+a=np.array([[[1,2,3],[4,5,6]]])
+unpermuted=torch.tensor(a)
+print(unpermuted.size())              #  ——>  torch.Size([1, 2, 3])
+
+permuted=unpermuted.permute(2,0,1)
+print(permuted.size())                #  ——>  torch.Size([3, 1, 2])
+print(permuted.is_contiguous())       # False
+
+view_test = unpermuted.view(1,3,2)
+print(view_test.size())               #  ——>  torch.Size([1, 3, 2])
+```
+
+### 0.4 数据拼接 
+
+- `torch.cat(tensors, dim=0, out=None) → Tensor`，在指定维度上进行数据的拼接，如当`dim=0`时，在第0维度进行扩展
+
+```python
+>>> x = torch.randn(2, 3)
+>>> x
+tensor([[ 0.6580, -1.0969, -0.4614],
+        [-0.1034, -0.5790,  0.1497]])
+>>> torch.cat((x, x, x), 0)
+tensor([[ 0.6580, -1.0969, -0.4614],
+        [-0.1034, -0.5790,  0.1497],
+        [ 0.6580, -1.0969, -0.4614],
+        [-0.1034, -0.5790,  0.1497],
+        [ 0.6580, -1.0969, -0.4614],
+        [-0.1034, -0.5790,  0.1497]])
+>>> torch.cat((x, x, x), 1)
+tensor([[ 0.6580, -1.0969, -0.4614,  0.6580, -1.0969, -0.4614,  0.6580,
+         -1.0969, -0.4614],
+        [-0.1034, -0.5790,  0.1497, -0.1034, -0.5790,  0.1497, -0.1034,
+         -0.5790,  0.1497]])
+```
+
+### 0.5 数据压栈
+
+- `torch.stack(tensors, dim=0, out=None) → Tensor`
+
+`torch.stack()` 要求不同的 `tensor` 之间是相同的维度，它的作用与转置的作用类似，不同的是 `torch.stack()` 作用于不同的 `tensor`，通过指定 `dim` 去除相应维度的数据进行组合成新的维度，也就是 `stack`。
+
+```python
+a = torch.IntTensor([[1, 2, 3]])
+b = torch.IntTensor([[4, 5, 6]])
+
+d0 = torch.stack([a, b], dim=0)
+d1 = torch.stack([a, b], dim=1)
+d2 = torch.stack([a, b], dim=2)
+```
+
+### 0.6 数据压缩
+
+- `tensor.squeeze()`
+- `tensor.unsqueeze()`
+
+压缩的维度为元素个数为 1 的维度，如：
+
+```python
+a = torch.randn(2,1)
+a.size()                # [2, 1]
+a.squeeze().size()      # [2]
 ```
 
 ## 1. Variable(变量)
 
 > Variable 是神经网络计算图里的概念，提供了自动求导的功能。Variable 和 Tensor 本质上没有区别，不过 Variable 会被放入一个计算图中，然后进行前向传播、反向传播、自动求导。
 
-位置： `torch.autograd.Variable` 
+位置： `torch.autograd.Variable`
 
 ```python
 x = Variable(torch.Tensor([1]))
@@ -93,7 +167,7 @@ print(y_softplus)
 ### 5.1 `nn.Linear(in_features, out_features, bias=True)`
 
 - `in_features` 每个输入样本的大小
-- `out_features` 每个输出样本的大小 
+- `out_features` 每个输出样本的大小
   
 $$y=Ax+b$$
 
@@ -107,7 +181,7 @@ $$y=Ax+b$$
 $$
 y=\begin{cases}
 0, \quad x\leq0 \\\\
-x, \quad x>0 
+x, \quad x>0
 \end{cases}
 $$
 
@@ -131,7 +205,7 @@ hello_variable = Variable(hello_idx)
 hello_embed = embeds(hello_variable)
 print(hello_embed)
 
-embeds.weight.data = torch.ones(2, 5)   # embeddings 的 weight 可以设置
+embeds.weight.data = torch.ones(2, 5)   # embeddings 的 weight 可以设置 
 print(embeds.weight)
 ```
 
@@ -203,3 +277,4 @@ for input, target in dataset:
 ## 7. 参考
 
 - [PyTorch-官方教程](https://pytorch-cn.readthedocs.io/zh/latest/package_references/torch-optim/)
+- [pytorch-文档](https://pytorch.org/docs/stable/torch.html)

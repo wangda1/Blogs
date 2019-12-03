@@ -21,6 +21,13 @@ conda env export > environment.yml
 conda env create -f environment.yml 
 ```
 
+## pip 源
+
+```python
+pip install -i https://pypi.tuna.tsinghua.edu.cn/simple -r requirements.txt # pip 清华源
+pip install -i http://pypi.douban.com/simple/ -r requirements.txt           # pip 豆瓣源
+```
+
 ## 参考
 - https://zhuanlan.zhihu.com/p/57287956
 - 
