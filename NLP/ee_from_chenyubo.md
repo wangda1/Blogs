@@ -2,6 +2,10 @@
 
 *主讲人：陈玉博，中科院自动化所，DmCNN的一作*
 
+*参考CSDN公开课视频：https://edu.csdn.net/course/play/25560/307899*
+
+## 0. 前言
+
 ![chen_ee](./IMG/chen/chen_01.png)
 
 ![chen_ee](./IMG/chen/chen_02.png)
@@ -34,7 +38,7 @@
 
 ![chen_ee](./IMG/chen/chen_16.png)
 
-## 特征表示
+## 1. 特征表示
 
 ![chen_ee](./IMG/chen/chen_17.png)
 
@@ -48,7 +52,7 @@
 
 ![chen_ee](./IMG/chen/chen_22.png)
 
-## 训练数据生成和扩展
+## 2. 训练数据生成和扩展
 
 ![chen_ee](./IMG/chen/chen_23.png)
 
@@ -72,7 +76,7 @@
 
 ![chen_ee](./IMG/chen/chen_33.png)
 
-## 多事件协同抽取
+## 3. 多事件协同抽取
 
 ![chen_ee](./IMG/chen/chen_34.png)
 
@@ -86,7 +90,7 @@
 
 ![chen_ee](./IMG/chen/chen_39.png)
 
-## 篇章级事件抽取
+## 4. 篇章级事件抽取
 
 ![chen_ee](./IMG/chen/chen_40.png)
 
