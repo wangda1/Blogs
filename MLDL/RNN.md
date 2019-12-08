@@ -81,4 +81,3 @@ RNN 的误差曲面上存在很多陡峭的斜坡，斜坡上误差的变化率�
 - `batch_first` 决定网络输入的维度顺序，默认网络输入按照 `(seq, batch, feature)` ，解释为：序列长度、批量、特征维度；如果该参数设置为 `True`，则顺序变成 `(batch, seq, feature)`
 - `dropout` 参数接收0-1的数值，会在网络中除了最后一层之外的其他输出层加上 `dropout` 层
 - `bidirectional` 默认参数是 False
-
