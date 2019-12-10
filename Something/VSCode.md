@@ -12,7 +12,7 @@
 
 ## Q&A
 
-### 3.1 在`Java`中不能导入第三方的库，出现　`xxx unresolve`　的问题：
+### 3.1 在`Java`中不能导入第三方的库，出现　`xxx unresolve`　的问题
 
 *ref: https://stackoverflow.com/a/57249227*
 
