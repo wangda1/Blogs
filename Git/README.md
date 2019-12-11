@@ -60,3 +60,7 @@ Merge the remote changes (e.g. 'git pull') before pushing again.  See the
 - `git config --global http.proxy (127.0.0.1:1080)`
 - `git config --get http.proxy`
 - `git config --list`
+  
+3. `git status` 显示的中文为八进制字符，而不是中文
+
+- `git config --global core.quotepath false` 设置 `core.quotepath` 为 `false`
