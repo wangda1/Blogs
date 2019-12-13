@@ -1,6 +1,12 @@
 # Conda
 
 ```python
+# 查看conda下的所有基本配置
+conda config --show
+# 删除conda的channel
+conda config --remove channels 'default'
+# 添加conda的channel
+conda config --add channels https://xxx
 # 配置清华PyPI镜像（如无法运行，将pip版本升级到>=10.0.0）
 pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 # 创建环境
