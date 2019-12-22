@@ -6,3 +6,4 @@
 
 - [video](https://www.youtube.com/watch?v=ZaXm6wau-jc)
 - [知乎-看完这个，你就是半个天线专家](https://zhuanlan.zhihu.com/p/51098683)
+- [无线电频谱划分及相关基础知识](https://zhuanlan.zhihu.com/p/28552572)
