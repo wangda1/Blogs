@@ -1,6 +1,6 @@
 # Linear Algebra
 
-线性代数
+?????????
 
 ## Resources
 
@@ -8,4 +8,10 @@
 
 *Instructor: Prof. Gilbert Strang*
 
+????
+
 - [course home](https://ocw.mit.edu/courses/mathematics/18-06sc-linear-algebra-fall-2011/)
+
+????
+
+- MIT 18.06C????????
