@@ -52,6 +52,17 @@ maven 下载依赖包的执行流程：
 ```maven
 mvn archetype:generate -DgroupId=packageName -DartifactId=projectName -DarchetypeArtifactId=maven-archetype-quickstart/maven-archetype-webapp -DinteractiveMode=false   # 普通　java 项目/Web项目
 mvn archetype:create
+-X                        # 可打印出构建的过程，方便debug
+-DarchetypeCatalog=local  # 读取本地catalog文件，不用从repo.maven下载
+```
+
+- `groupId` 会自动在`name/src/main/java/`目录下构建起 package == package name
+- `artifactId` 是项目文件夹的名字
+- 使用命令行生成maven工程不需要新建文件夹
+
+```maven
+-DgroupId=com.sample
+-DartifactId=NaiveBayes             #   
 ```
 
 ### 4.2 代码的编译
