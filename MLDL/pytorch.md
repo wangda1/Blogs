@@ -231,11 +231,145 @@ model = nn.Sequential(OrderedDict([
         ]))
 ```
 
-### 5.6 `nn.CrossEntropyLoss(weight=None, size_average=True)`
+### 5.6 `nn.CrossEntropyLoss`
+
+```python
+torch.nn.CrossEntropyLoss(weight=None, size_average=None, ignore_index=-100, reduce=None, reduction='mean')
+```
+
+该函数相当于组合了 `nn.LogSoftmax()` 和 `nn.NLLLoss()`
 
 $$loss(x,class) = -log{\frac{exp(x[class])}{\sum_{j}exp(x[j])}}$$
 
-### 5.7 `nn.RNN()` 与 `nn.LSTM()` 中已经讲过参考 [RNN](./RNN.md)
+等于（当 `weight` 参数非零时）
+
+$$loss(x,class) = weight[class]\left(-x[class] + log(\sum_{j}exp\left(x[j]\right)\right)$$
+
+通过以上公式求交叉熵，应用于多分类问题中的`loss function`
+
+#### 5.6.1 Parameters
+
+- `weight`，结合上式，赋值给每个class 的 weight
+- `reduction` 默认为 `mean`，可以为 `none | mean | sum`，是对计算后的 output 值的整合
+
+#### 5.6.2 Shape
+
+- 输入1：`Input:(N,C)` N 代表batch个数，C 代表 class 的个数；
+- 输入2：`Target:(N)` 代表对应的类别的序号
+
+#### 5.6.3 Example
+
+```python
+>>> loss = nn.CrossEntropyLoss(reduction='none')
+>>> input = torch.randn(3, 5, requires_grad=True)  # 输入 batch:3,class numbers: 5
+>>> target = torch.empty(3, dtype=torch.long).random_(5) # 输入 target:
+>>> output = loss(input, target)
+>>> output.backward()
+```
+
+### 5.7 `nn.RNN()`
+
+```python
+torch.nn.RNN(*args, **kwargs)
+```
+
+可以构造多层的RNN，每一层的计算函数为：
+
+$$h_{t} = tanh\left( W_{ih}x_{t} + b_{ih} + W_{hh}h_{(t-1)} + b_{hh}\right)$$
+
+#### 5.7.1 Parameters
+
+- `input_size:` input 的 feature 数量
+- `hidden_size:` hidden layer 的feature 数量
+- `num_layers:` 循环RNN的数量，可以组成 stacked RNN
+- `nonlinearity:` 非线性函数，可以为 `tanh` 或 `relu`，默认为 `tanh`
+- `bidirectional:` 设置为 `True`，则为 bidirectional RNN
+
+#### 5.7.2 Shape
+
+- `input:` shape(seq_len, batch, input_size)，多少个sequence，每个sequence带有多少个batch，每个batch里的 input_size
+- `h_0:`  shape(num_layers*num_directions, batch, hidden_size)，这里设置 hidden layer 的参数
+
+#### 5.7.3 Example
+
+```python
+>>> rnn = nn.RNN(10, 20, 2)     # input_size: 10; hidden_size: 20; num_layers: 2
+>>> input = torch.randn(5, 3, 10) # seq_len: 5; batch: 3; input_size: 10
+>>> h0 = torch.randn(2, 3, 20) # num_layers * num_directions: 2; batch: 3; hidden_size: 20
+>>> output, hn = rnn(input, h0)
+```
+
+### 5.8 `nn.LSTM()`
+
+$$
+i_{t} = \sigma\left(W_{ii}x_{t} + b_{ii} + W_{hi}h_{(t-1)} + b_{hi}\right) \\\\
+f_{t} = \sigma\left(W_{if}x_{t} + b_{if} + W_{hf}h_{(t-1)} + b_{hf}\right) \\\\
+g_{t} = tanh(W_{ig}x_{t} + b_{ig} + W_{hg}h_{(t-1)} + b_{hg}) \\\\
+o_{t} = \sigma(W_{io}x_{t} + b_{io} + W_{ho}h_{(t-1)} + b_{ho}) \\\\
+c_{t} = f_{t} * c_{(t-1)} + i_{t} * g_{t} \\\\
+h_{t} = o_{t} * tanh(c_{t})
+$$
+
+```python
+torch.nn.LSTM(*args, **kwargs)
+```
+
+#### 5.8.1 Parameters
+
+- `input_size:` input 的 feature 数量
+- `hidden_size:` hidden layer 的feature 数量
+- `num_layers:` 循环RNN的数量，可以组成 stacked RNN
+- `bidirectional:` 设置为 `True`，则为 bidirectional LSTM
+
+#### 5.8.2 Shape
+
+- `input:` shape(seq_len, batch, input_size)，多少个sequence，每个sequence带有多少个batch，每个batch里的 input_size
+- `h_0:`  shape(num_layers*num_directions, batch, hidden_size)，这里设置 hidden layer 的参数
+- `c_0:` shape(num_layers*num_directions, batch, hidden_size), 初始化的 cell state 每个 batch
+
+#### 5.8.3 Example
+
+```python
+>>> rnn = nn.LSTM(10, 20, 2)
+>>> input = torch.randn(5, 3, 10)
+>>> h0 = torch.randn(2, 3, 20)
+>>> c0 = torch.randn(2, 3, 20)
+>>> output, (hn, cn) = rnn(input, (h0, c0))
+```
+
+### 5.9 `nn.GRU()`
+
+```python
+torch.nn.GRU(*args, **kwargs)
+```
+
+$$
+r_{t} = \sigma(W_{ir}x_{t} + b_{ir} + W_{hr}h_{(t-1)} + b_{hr}) \\\\
+z_{t} = \sigma(W_{iz}x_{t} + b_{iz} + W_{hz}h_{(t-1)} + b_{hz}) \\\\
+n_{t} = tanh(W_{in}x_{t} + b_{in} + r_{t}*(W_{hn}h_{(t-1)} + b_{hn})) \\\\
+h_{t} = (1-z_{t}) * n_{t} + z_{t} * h_{(t-1)}
+$$
+
+#### 5.9.1 Parameters
+
+- `input_size:` input 的 feature 数量
+- `hidden_size:` hidden layer 的feature 数量
+- `num_layers:` 循环RNN的数量，可以组成 stacked RNN
+- `bidirectional:` 设置为 `True`，则为 bidirectional LSTM
+
+#### 5.9.2 Shape
+
+- `input:` shape(seq_len, batch, input_size)，多少个sequence，每个sequence带有多少个batch，每个batch里的 input_size
+- `h_0:`  shape(num_layers*num_directions, batch, hidden_size)，这里设置 hidden layer 的参数
+
+#### 5.9.3 Example
+
+```python
+>>> rnn = nn.GRU(10, 20, 2)
+>>> input = torch.randn(5, 3, 10)
+>>> h0 = torch.randn(2, 3, 20)
+>>> output, hn = rnn(input, h0)
+```
 
 ## 6. `torch.optim`
 
@@ -274,7 +408,26 @@ for input, target in dataset:
 - `step(closure)` 进行单次优化
 - `zero_grad()` 清空所有被优化过的 Variable 的梯度
 
-## 7. 参考
+## 7. `torch.utils`
+
+### 7.1 `torch.utils.data.Dataloader`
+
+```python
+DataLoader(dataset, batch_size=1, shuffle=False, sampler=None,
+           batch_sampler=None, num_workers=0, collate_fn=None,
+           pin_memory=False, drop_last=False, timeout=0,
+           worker_init_fn=None)
+```
+
+主要的几个参数：
+
+- dataset: 数据集来源，可以是 `map-style` or `iterable-style` dataset.
+- batch_size: 每个 `batch` 有多少个 samples
+- shuffle: 是否在每个 `epoch` 进行 reshuffle
+
+python 迭代器构造在数据集上。
+
+## 8. 参考
 
 - [PyTorch-官方教程](https://pytorch-cn.readthedocs.io/zh/latest/package_references/torch-optim/)
 - [pytorch-文档](https://pytorch.org/docs/stable/torch.html)
