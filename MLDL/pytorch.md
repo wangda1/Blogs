@@ -302,12 +302,14 @@ $$h_{t} = tanh\left( W_{ih}x_{t} + b_{ih} + W_{hh}h_{(t-1)} + b_{hh}\right)$$
 ### 5.8 `nn.LSTM()`
 
 $$
-i_{t} = \sigma\left(W_{ii}x_{t} + b_{ii} + W_{hi}h_{(t-1)} + b_{hi}\right) \\\\
-f_{t} = \sigma\left(W_{if}x_{t} + b_{if} + W_{hf}h_{(t-1)} + b_{hf}\right) \\\\
-g_{t} = tanh(W_{ig}x_{t} + b_{ig} + W_{hg}h_{(t-1)} + b_{hg}) \\\\
-o_{t} = \sigma(W_{io}x_{t} + b_{io} + W_{ho}h_{(t-1)} + b_{ho}) \\\\
-c_{t} = f_{t} * c_{(t-1)} + i_{t} * g_{t} \\\\
-h_{t} = o_{t} * tanh(c_{t})
+\begin{aligned}
+i_{t} =& \ \sigma\left(W_{ii}x_{t} + b_{ii} + W_{hi}h_{(t-1)} + b_{hi}\right) \\
+f_{t} =& \ \sigma\left(W_{if}x_{t} + b_{if} + W_{hf}h_{(t-1)} + b_{hf}\right) \\
+g_{t} =& \ tanh(W_{ig}x_{t} + b_{ig} + W_{hg}h_{(t-1)} + b_{hg}) \\
+o_{t} =& \ \sigma(W_{io}x_{t} + b_{io} + W_{ho}h_{(t-1)} + b_{ho}) \\
+c_{t} =& \ f_{t} * c_{(t-1)} + i_{t} * g_{t} \\
+h_{t} =& \ o_{t} * tanh(c_{t})
+\end{aligned}
 $$
 
 ```python
@@ -344,10 +346,12 @@ torch.nn.GRU(*args, **kwargs)
 ```
 
 $$
-r_{t} = \sigma(W_{ir}x_{t} + b_{ir} + W_{hr}h_{(t-1)} + b_{hr}) \\\\
-z_{t} = \sigma(W_{iz}x_{t} + b_{iz} + W_{hz}h_{(t-1)} + b_{hz}) \\\\
-n_{t} = tanh(W_{in}x_{t} + b_{in} + r_{t}*(W_{hn}h_{(t-1)} + b_{hn})) \\\\
-h_{t} = (1-z_{t}) * n_{t} + z_{t} * h_{(t-1)}
+\begin{aligned}
+r_{t} =& \ \sigma(W_{ir}x_{t} + b_{ir} + W_{hr}h_{(t-1)} + b_{hr}) \\
+z_{t} =& \ \sigma(W_{iz}x_{t} + b_{iz} + W_{hz}h_{(t-1)} + b_{hz}) \\
+n_{t} =& \ tanh(W_{in}x_{t} + b_{in} + r_{t}*(W_{hn}h_{(t-1)} + b_{hn})) \\
+h_{t} =& \ (1-z_{t}) * n_{t} + z_{t} * h_{(t-1)}        
+\end{aligned}
 $$
 
 #### 5.9.1 Parameters
@@ -427,7 +431,21 @@ DataLoader(dataset, batch_size=1, shuffle=False, sampler=None,
 
 python 迭代器构造在数据集上。
 
-## 8. 参考
+## 8. 模型的保存与加载
+
+*参考：https://zhuanlan.zhihu.com/p/38056115*
+
+```python
+# 保存整个网络
+torch.save(net, PATH)
+# 保存网络中的参数
+torch.save(net.state_dict(), PATH)
+
+# 模型的加载，对应于以上两种保存的方式
+model_dict = torch.load(PATH)
+model_dict = model.load_state_dict(torch.load(PATH))
+```
+## 9. 参考
 
 - [PyTorch-官方教程](https://pytorch-cn.readthedocs.io/zh/latest/package_references/torch-optim/)
 - [pytorch-文档](https://pytorch.org/docs/stable/torch.html)

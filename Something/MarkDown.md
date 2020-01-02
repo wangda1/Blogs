@@ -104,3 +104,52 @@ $$\begin{bmatrix}
     1 & 2 \\\\
     3 & 4
 \end{bmatrix}$$
+
+- 数学公式中的空格
+
+markdown 中数学公式中的空格
+
+```markdown
+没有空格 $ab$
+小空格 a\,b
+中等空格 a\;b
+大空格 a\ b
+quad空格 $a\quad b$
+qquad空格 $a\qquad b$
+```
+
+没有空格 $ab$  
+小空格 $a\,b$  
+中等空格 $a\;b$  
+大空格 $a\ b$  
+quad空格 $a\quad b$  
+qquad空格 $a\qquad b$
+
+- 数学公式的换行
+
+使用 `\\` 或 `\\` 进行数学公式的换行，使用在 `\begin \end` 块中，见以下示例。
+
+- 数学公式的对齐
+
+使用 `aligned` + `&`
+
+```markdown
+$$
+\begin{aligned}
+r_{t} =& \sigma(W_{ir}x_{t} + b_{ir} + W_{hr}h_{(t-1)} + b_{hr}) \\
+z_{t} =& \sigma(W_{iz}x_{t} + b_{iz} + W_{hz}h_{(t-1)} + b_{hz}) \\
+n_{t} =& tanh(W_{in}x_{t} + b_{in} + r_{t}*(W_{hn}h_{(t-1)} + b_{hn})) \\
+h_{t} =& (1-z_{t}) * n_{t} + z_{t} * h_{(t-1)}        
+\end{aligned}
+$$
+```
+
+$$
+\begin{aligned}
+r_{t} =& \sigma(W_{ir}x_{t} + b_{ir} + W_{hr}h_{(t-1)} + b_{hr}) \\
+z_{t} =& \sigma(W_{iz}x_{t} + b_{iz} + W_{hz}h_{(t-1)} + b_{hz}) \\
+n_{t} =& tanh(W_{in}x_{t} + b_{in} + r_{t}*(W_{hn}h_{(t-1)} + b_{hn})) \\
+h_{t} =& (1-z_{t}) * n_{t} + z_{t} * h_{(t-1)}        
+\end{aligned}
+$$
+
