@@ -29,6 +29,21 @@
 
 `torch.max()` 函数用于选出 tensor 中的最大值，用法如下：
 
+```python
+import torch
+
+a = torch.randn(1, 3)
+
+torch.max(a)    # 返回 a 中最大的元素
+torch.max(a)[1] # 返回 a 中最大的元素的索引
+
+torch.max(a, 0) # 返回 a 中每一列最大的元素
+torch.max(a, 0)[1] # 返回 a 中每一列最大的元素的索引 index
+
+torch.max(a, 1) # 返回 a 中每一行最大的元素
+torch.max(a, 1)[1] # 返回 a 中每一行最大的元素的索引 index
+```
+
 ### 0.3 变换数据维度
 
 这里涉及到的总共有 3 种方法：
@@ -54,6 +69,9 @@ print(permuted.is_contiguous())       # False
 
 view_test = unpermuted.view(1,3,2)
 print(view_test.size())               #  ——>  torch.Size([1, 3, 2])
+
+view_test = view_test.view(-1, 2)     #  -->  使用 -1 进行自动推导，包含两个维度
+view_test = view_test.view(-1)        #  -->  只包含一个维度
 ```
 
 ### 0.4 数据拼接 
@@ -166,10 +184,30 @@ print(y_softplus)
 
 ### 5.1 `nn.Linear(in_features, out_features, bias=True)`
 
+$$y=xA^{T}+b$$
+
+#### 5.1.1 Parameters
+
 - `in_features` 每个输入样本的大小
 - `out_features` 每个输出样本的大小
-  
-$$y=Ax+b$$
+
+#### 5.1.2 Shape
+
+- `input:` 
+$$(N, *, H_{in}), 其中H_{in} = in\_features$$
+
+- `output:`
+$$(N, *, H_{out}), 其中H_{out} = out\_features$$
+
+#### 5.1.3 Example
+
+```python
+>>> m = nn.Linear(20, 30)
+>>> input = torch.randn(128, 20)
+>>> output = m(input)
+>>> print(output.size())
+torch.Size([128, 30])
+```
 
 ### 5.2 `nn.Dropout(p=0.5, inplace=False)`
 
@@ -290,6 +328,8 @@ $$h_{t} = tanh\left( W_{ih}x_{t} + b_{ih} + W_{hh}h_{(t-1)} + b_{hh}\right)$$
 - `input:` shape(seq_len, batch, input_size)，多少个sequence，每个sequence带有多少个batch，每个batch里的 input_size
 - `h_0:`  shape(num_layers*num_directions, batch, hidden_size)，这里设置 hidden layer 的参数
 
+- `output` shape(seq_len, batch, num_directions * hidden_size)，这里的 output 是最后一层 layer 的 output
+
 #### 5.7.3 Example
 
 ```python
@@ -298,6 +338,11 @@ $$h_{t} = tanh\left( W_{ih}x_{t} + b_{ih} + W_{hh}h_{(t-1)} + b_{hh}\right)$$
 >>> h0 = torch.randn(2, 3, 20) # num_layers * num_directions: 2; batch: 3; hidden_size: 20
 >>> output, hn = rnn(input, h0)
 ```
+
+**Notation:**
+
+1. `RNN` 的 output：是最后一层（the last hidden_layer）的每个 `batch` 每个 `time_step/seq_len` 的output
+2. `RNN` 的 h_n 是每一个隐藏层（hidden_layer）的每个 `batch` 的 output
 
 ### 5.8 `nn.LSTM()`
 
@@ -445,7 +490,8 @@ torch.save(net.state_dict(), PATH)
 model_dict = torch.load(PATH)
 model_dict = model.load_state_dict(torch.load(PATH))
 ```
+
 ## 9. 参考
 
 - [PyTorch-官方教程](https://pytorch-cn.readthedocs.io/zh/latest/package_references/torch-optim/)
-- [pytorch-文档](https://pytorch.org/docs/stable/torch.html)
+- [pytorch-文档](https://pytorch.org/docs/stable/torch.html)    
