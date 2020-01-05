@@ -1,3 +1,12 @@
+---
+title: Maven
+date: 2020-01-05 16:09:10
+categories:
+- Java
+tags:
+- Java
+---
+
 # Maven
 
 ## 1. 安装与配置
@@ -22,7 +31,7 @@
 
 maven 下载依赖包的执行流程：
 
-![maven](./IMG/maven.jpg)\
+![maven](Maven/maven.jpg)
 
 修改默认中央仓库的位置（以阿里云为例）：
 

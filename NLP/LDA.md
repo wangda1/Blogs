@@ -1,3 +1,12 @@
+---
+title: LDA
+date: 2019-11-07 10:11:03
+categories:
+- NLP
+tags:
+- NLP
+---
+
 LDA 
 
 ## 输入与训练

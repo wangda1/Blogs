@@ -1,3 +1,12 @@
+---
+title: stdlib_h
+date: 2019-11-08 19:09:35
+categories:
+- C
+tags:
+- C
+---
+
 # stdlib.h
 
 这个头文件经常遇到，仅知道几个函数与其有关，还是总结一下比较好

@@ -1,4 +1,11 @@
-# SQL注入  
+---
+title: SqlInjection
+date: 2020-01-05 17:27:58
+categories:
+- SQL
+tags:
+- SQL
+---
 
 ## Sql注入的基本类型  
 

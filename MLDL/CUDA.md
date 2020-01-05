@@ -1,3 +1,12 @@
+---
+title: CUDA
+date: 2020-01-05 16:15:39
+categories:
+- MLDL
+tags:
+- MLDL
+---
+
 # CUDA
 
 ## 1. 前言
@@ -26,7 +35,7 @@
 
 展示GPU的一个SM的示意图（绿色部分为 SP）：
 
-![cuda_sm](./IMG/cuda_sm.png)
+![cuda_sm](CUDA/cuda_sm.png)
 
 GPU 中的内存按照访存速度划分：
 
@@ -46,11 +55,11 @@ GPU 中的内存按照访存速度划分：
 - block
 - grid
 
-![cuda_sw](./IMG/cuda_sw.png)
+![cuda_sw](CUDA/cuda_sw.png)
 
 ### 2.3 软硬件之间的对应关系
 
-![cuda_sw_hw](./IMG/cuda_sw_hw.png)
+![cuda_sw_hw](CUDA/cuda_sw_hw.png)
 
 ## 3. CUDA的编程模型
 

@@ -1,3 +1,12 @@
+---
+title: dynamic_Programming_sum
+date: 2019-11-08 19:09:35
+categories:
+- Algorithm
+tags:
+- Algorithm
+---
+
 # Dynamic Programming 总结
 
 ## 概述

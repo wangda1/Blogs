@@ -1,3 +1,14 @@
+---
+title: Question_in_stackoverflow
+date: 2019-08-26 11:28:11
+categories:
+- Python
+- gc
+tags:
+- Python
+- gc
+---
+
 **Background truths(?):** When python program exits, `gc`(`garbage collection`) works to collect memory in a common way `reference counting`.
 
 **Question:** but what's the order of objects' destructing or similar with `java`?

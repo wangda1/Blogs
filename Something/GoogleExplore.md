@@ -1,3 +1,12 @@
+---
+title: GoogleExplore
+date: 2019-11-08 19:09:36
+categories:
+- Something
+tags:
+- Something
+---
+
 # Google精确搜索，提高查询效率  
 
 [xuanhun](http://www.cnblogs.com/xuanhun/p/3910134.html)  感谢!

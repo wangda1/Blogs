@@ -1,3 +1,12 @@
+---
+title: gitignore
+date: 2019-11-27 11:50:35
+categories:
+- Git
+tags:
+- Git
+---
+
 `.gitignore` 文件常用于在 git 中忽略一些文件或目录
 
 ## 语法规范

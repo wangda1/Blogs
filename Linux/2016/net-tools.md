@@ -1,3 +1,14 @@
+---
+title: net-tools
+date: 2019-11-08 19:09:36
+categories:
+- Linux
+- 2016
+tags:
+- Linux
+- 2016
+---
+
 ## net-tools网管工具集  
 
 接上篇，当具体分析连接对应的端口号与查看相应的进程号与名字(PID与program name)时  

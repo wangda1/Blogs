@@ -1,3 +1,12 @@
+---
+title: dynamic_Programming1
+date: 2020-01-05 16:05:43
+categories:
+- Algorithm
+tags:
+- Algorithm
+---
+
 # Dynamic Programming （动态规划）
 
 
@@ -21,7 +30,7 @@
 有编号分别为a,b,c,d,e的五件物品，它们的重量分别是2,2,6,5,4，它们的价值分别是6,3,5,4,6，现在给你个承重为10的背包，如何让背包里装入的物品具有最  
 的价值总和
 ```
-![](img/package.png)
+![](dynamic_Programming1/package.png)
 
 ### 代码实现
 ```

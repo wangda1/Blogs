@@ -1,3 +1,12 @@
+---
+title: IO
+date: 2019-12-13 14:46:17
+categories:
+- Python
+tags:
+- Python
+---
+
 # python中的IO
 
 ## 文件读取

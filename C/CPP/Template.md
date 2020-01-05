@@ -1,3 +1,14 @@
+---
+title: Template
+date: 2019-11-08 19:09:35
+categories:
+- C
+- CPP
+tags:
+- C
+- CPP
+---
+
 # Template
 
 关于函数模板与函数重载

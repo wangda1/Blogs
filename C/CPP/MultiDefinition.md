@@ -1,3 +1,14 @@
+---
+title: MultiDefinition
+date: 2019-11-08 19:09:35
+categories:
+- C
+- CPP
+tags:
+- C
+- CPP
+---
+
 # multiple definition
 
 重复定义问题，以前没有注意到这个问题，觉得会有这种影响吗？不还是有

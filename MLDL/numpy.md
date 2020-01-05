@@ -1,3 +1,12 @@
+---
+title: numpy
+date: 2020-01-04 11:55:37
+categories:
+- MLDL
+tags:
+- MLDL
+---
+
 # Numpy 学习
 
 ```python

@@ -1,3 +1,14 @@
+---
+title: README
+date: 2019-11-08 19:09:35
+categories:
+- C
+- CMake
+tags:
+- C
+- CMake
+---
+
 # CMake
 
 用 CLion 写信号处理的软件课设的时候出现了链接找不到函数实现的情况，问了老司机，一眼指出我的 CMakeLists.txt 写的有问题    

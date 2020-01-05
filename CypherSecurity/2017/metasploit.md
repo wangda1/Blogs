@@ -1,3 +1,14 @@
+---
+title: metasploit
+date: 2019-11-08 19:09:36
+categories:
+- CypherSecurity
+- 2017
+tags:
+- CypherSecurity
+- 2017
+---
+
 # Metasploit
 
 这个在 Kali中是自带的，无需安装

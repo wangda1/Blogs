@@ -1,3 +1,12 @@
+---
+title: processSynchronization
+date: 2019-11-08 19:09:36
+categories:
+- OperatingSystem
+tags:
+- OperatingSystem
+---
+
 #  进程同步的一些算法  
 这些算法主要用于解决**临界区问题**  
 所谓临界区，即对共享数据访问与操作的代码，主要要求是最多只有一个进程在临界区内  

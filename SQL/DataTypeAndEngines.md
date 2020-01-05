@@ -1,3 +1,12 @@
+---
+title: DataTypeAndEngines
+date: 2019-11-08 19:09:36
+categories:
+- SQL
+tags:
+- SQL
+---
+
 # DataType and Engines  数据类型与存储引擎
 
 ## DataType 数据类型  

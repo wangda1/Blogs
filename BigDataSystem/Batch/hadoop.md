@@ -1,3 +1,14 @@
+---
+title: hadoop
+date: 2019-12-10 10:25:16
+categories:
+- BigDataSystem
+- Batch
+tags:
+- BigDataSystem
+- Batch
+---
+
 # Hadoop
 
 ## 1. 安装与配置

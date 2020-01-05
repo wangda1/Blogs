@@ -1,3 +1,12 @@
+---
+title: jieba
+date: 2019-11-21 21:49:28
+categories:
+- NLP
+tags:
+- NLP
+---
+
 ## Jieba简介
 
 jieba是一款中文分词工具

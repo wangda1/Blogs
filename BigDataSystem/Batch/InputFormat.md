@@ -1,3 +1,14 @@
+---
+title: InputFormat
+date: 2019-12-10 10:34:55
+categories:
+- BigDataSystem
+- Batch
+tags:
+- BigDataSystem
+- Batch
+---
+
 # Hadoop InputFormat
 
 ## What is Hadoop InputFormat?

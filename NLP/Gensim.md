@@ -1,3 +1,12 @@
+---
+title: Gensim
+date: 2019-11-21 22:02:40
+categories:
+- NLP
+tags:
+- NLP
+---
+
 ## 学习参考
 
 - 英语wiki LDA、LSA：http://www.alwa.info/2017/03/20/Gensim%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/

@@ -1,3 +1,12 @@
+---
+title: mongodb
+date: 2019-11-27 20:10:21
+categories:
+- Database
+tags:
+- Database
+---
+
 # mongo DB
 
 ## 1. 插入

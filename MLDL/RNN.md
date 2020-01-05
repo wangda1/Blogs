@@ -1,3 +1,12 @@
+---
+title: RNN
+date: 2020-01-05 16:14:54
+categories:
+- MLDL
+tags:
+- MLDL
+---
+
 # RNN(循环神经网络)
 
 *参考：《深度学习入门之PyTorch》配套代码地址：https://github.com/L1aoXingyu/code-of-learn-deep-learning-with-pytorch*
@@ -13,15 +22,15 @@
 
 ### 2.1 基本 RNN
 
-![base_RNN](./IMG/base_rnn.png)
+![base_RNN](RNN/base_rnn.png)
 
 ### 2.2 双向 RNN（BiRNN)
 
-![Bi_RNN](./IMG/BiRNN.png)
+![Bi_RNN](RNN/BiRNN.png)
 
 ### 2.3 深层 RNN
 
-![Deep_RNN](./IMG/deep_RNN.jpg)
+![Deep_RNN](RNN/deep_RNN.jpg)
 
 *以上图示均为按照时间线展开，实际只是网络的循环，故名循环神经网络*
 
@@ -41,19 +50,19 @@ LSTM 的三个门：
 - 遗忘门，遗忘门控制着记忆单元
 - 输出门，输出门控制着网络的输出
 
-![LSTM](./IMG/LSTM.png)
+![LSTM](RNN/LSTM.png)
 
-![LSTM](./IMG/LSTM_1.jpg)
+![LSTM](RNN/LSTM_1.jpg)
 
-![LSTM](./IMG/LSTM_2.jpg)
+![LSTM](RNN/LSTM_2.jpg)
 
-![LSTM](./IMG/LSTM_3.jpg)
+![LSTM](RNN/LSTM_3.jpg)
 
 ### 4.2 GRU
 
 GRU是 Gated Recurrent Unit的缩写，由 cho 在2014年提出。GRU 和 LSTM 最大的不同在于 GRU 将遗忘门和输入门合成了一个 “更新门”， 同时网络只进行传递和保存的状态是 `ht`.
 
-![LSTM](./IMG/LSTM_4.jpg)
+![LSTM](RNN/LSTM_4.jpg)
 
 ### 4.3 收敛性问题
 

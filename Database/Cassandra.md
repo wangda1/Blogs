@@ -1,3 +1,12 @@
+---
+title: Cassandra
+date: 2019-11-27 15:50:40
+categories:
+- Database
+tags:
+- Database
+---
+
 # Cassandra
 
 > *wikipedia:* Cassandra 是一套开源式分布式 NoSQL 数据库系统。 最初由 Facebook 开发，用于储存收件箱等简单格式数据，集 Google BigTable 的数据模型与 Amazon Dynamo的完全分布式架构于一身。

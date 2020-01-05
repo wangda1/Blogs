@@ -1,3 +1,12 @@
+---
+title: PCB
+date: 2019-11-08 19:09:36
+categories:
+- Something
+tags:
+- Something
+---
+
 # PCB绘制的一些快捷键  
 
 **1.右击PCB文件--Split Vertical可以对照原理图进行布线了**

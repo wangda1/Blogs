@@ -1,3 +1,12 @@
+---
+title: enumerate
+date: 2019-11-14 11:27:50
+categories:
+- Python
+tags:
+- Python
+---
+
 # enumerate() 函数
 
 `enumerate()` 函数将一个可遍历的数据对象（如列表、元组、字符串等）组合成一个索引序列，同时列出数据和数据下标

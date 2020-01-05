@@ -1,3 +1,12 @@
+---
+title: string_h
+date: 2019-11-08 19:09:35
+categories:
+- C
+tags:
+- C
+---
+
 # string.h vs string
 
 

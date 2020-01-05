@@ -1,3 +1,12 @@
+---
+title: BasicOperation
+date: 2019-11-08 19:09:36
+categories:
+- SQL
+tags:
+- SQL
+---
+
 # MySQL的基本操作
 
 MySQL数据库:  

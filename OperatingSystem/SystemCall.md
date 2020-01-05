@@ -1,3 +1,12 @@
+---
+title: SystemCall
+date: 2020-01-05 16:18:03
+categories:
+- OperatingSystem
+tags:
+- OperatingSystem
+---
+
 # system call（系统调用）  
 
 ## 概述 
@@ -5,7 +14,7 @@
 系统调用在内核实现，在C/C++函数库里进行封装成API，当然用户程序也可以直接调用系统调用。  
 
 关于系统调用，API，内核函数，库函数的关系:  
-![关系图](image/systemcall1.png)
+![关系图](SystemCall/systemcall1.png)
 
 
 ## 系统调用类别：
@@ -27,12 +36,12 @@
 - 通过通用寄存器传递参数  
 - 在内存中开辟专用堆栈区（带有共享内存的意味）
 ### 示例
-![](image/systemcall2.png)
+![](SystemCall/systemcall2.png)
 
 ## 系统调用的执行过程  
-![](image/systemcall3.png)
+![](SystemCall/systemcall3.png)
 
-![](image/systemcall4.png)
+![](SystemCall/systemcall4.png)
 
 （图片为看mooc时截屏照片，仅供学习，侵即删）
 

@@ -1,3 +1,14 @@
+---
+title: README
+date: 2019-12-25 20:32:48
+categories:
+- Mathmatics
+- Numerical Analysis
+tags:
+- Mathmatics
+- Numerical Analysis
+---
+
 # 数值分析
 
 数值分析是从计算机的角度解决数学中常见的运算问题。

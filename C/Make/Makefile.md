@@ -1,3 +1,14 @@
+---
+title: Makefile
+date: 2019-11-08 19:09:35
+categories:
+- C
+- Make
+tags:
+- C
+- Make
+---
+
 # Makefile
 
 Makefile 文件是  make  的规则文件，是一种 build 脚本，里面阐明了编译链接的顺序及所需要的相关文件

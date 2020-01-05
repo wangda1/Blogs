@@ -1,3 +1,12 @@
+---
+title: pytorch(2)
+date: 2020-01-04 11:55:23
+categories:
+- MLDL
+tags:
+- MLDL
+---
+
 # pytorch (二)
 
 ## 1. `Variable` `Tensor` `numpy` 之间的转换

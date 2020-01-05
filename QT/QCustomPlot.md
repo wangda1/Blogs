@@ -1,3 +1,12 @@
+---
+title: QCustomPlot
+date: 2019-11-08 19:09:36
+categories:
+- QT
+tags:
+- QT
+---
+
 # QCustomPlot 
 
 QCustomPlot是一个绘图的第三方库，可用来绘制一些频谱图等

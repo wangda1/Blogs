@@ -1,3 +1,14 @@
+---
+title: LearnCMake
+date: 2019-07-29 09:59:51
+categories:
+- CMake
+- how-to-use-cmake
+tags:
+- CMake
+- how-to-use-cmake
+---
+
 ```cmake
 cmake_minimum_required(VERSION 3.14)
 project(My_project VERSION 1.1.0)

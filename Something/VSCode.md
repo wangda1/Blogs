@@ -1,3 +1,12 @@
+---
+title: VSCode
+date: 2019-12-10 10:25:16
+categories:
+- Something
+tags:
+- Something
+---
+
 # VSCode
 
 神器驾驭指南

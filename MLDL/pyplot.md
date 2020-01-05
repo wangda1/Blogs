@@ -1,3 +1,12 @@
+---
+title: pyplot
+date: 2020-01-04 12:10:06
+categories:
+- MLDL
+tags:
+- MLDL
+---
+
 # pyplot
 
 ```python

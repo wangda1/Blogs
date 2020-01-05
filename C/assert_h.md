@@ -1,3 +1,12 @@
+---
+title: assert_h
+date: 2019-11-08 19:09:35
+categories:
+- C
+tags:
+- C
+---
+
 # assert
 
 这是一个断言语句，常用来过滤条件与检测错误信息

@@ -1,3 +1,12 @@
+---
+title: tqdm
+date: 2020-01-02 09:59:38
+categories:
+- MLDL
+tags:
+- MLDL
+---
+
 # tqdm
 
 tqdm 是快速，可扩展的 python 进度条，用户只需要封装任意的迭代器 `tqdm(iterator)`

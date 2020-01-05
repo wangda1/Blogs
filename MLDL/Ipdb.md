@@ -1,3 +1,12 @@
+---
+title: Ipdb
+date: 2020-01-02 12:05:05
+categories:
+- MLDL
+tags:
+- MLDL
+---
+
 # IPDB (Ipython Debugger)
 
 IPDB和GDB类似，是一款集成了`Ipython`的Python代码命令行调试工具。

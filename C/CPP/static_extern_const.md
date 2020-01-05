@@ -1,3 +1,14 @@
+---
+title: static_extern_const
+date: 2019-11-08 19:09:35
+categories:
+- C
+- CPP
+tags:
+- C
+- CPP
+---
+
 # static extern const
 
 ## static

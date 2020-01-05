@@ -1,3 +1,12 @@
+---
+title: classic_problems
+date: 2019-11-08 19:09:36
+categories:
+- OperatingSystem
+tags:
+- OperatingSystem
+---
+
 # 经典同步问题  
 
 抄一下代码，想一下idea

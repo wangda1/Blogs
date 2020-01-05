@@ -1,3 +1,14 @@
+---
+title: CMake
+date: 2019-11-08 19:09:35
+categories:
+- C
+- CMake
+tags:
+- C
+- CMake
+---
+
 # CMake  
 
 首先，CMake是什么？  

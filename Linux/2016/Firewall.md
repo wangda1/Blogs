@@ -1,3 +1,14 @@
+---
+title: Firewall
+date: 2019-11-08 19:09:36
+categories:
+- Linux
+- 2016
+tags:
+- Linux
+- 2016
+---
+
 #  关于Firewalld的配制与使用  
 引用 http://www.sa-log.com/282.html
 

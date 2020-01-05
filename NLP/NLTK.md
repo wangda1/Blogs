@@ -1,3 +1,12 @@
+---
+title: NLTK
+date: 2019-11-21 17:47:01
+categories:
+- NLP
+tags:
+- NLP
+---
+
 ## 背景介绍
 
 NLTK 是最为知名的Python自然语言处理工具之一，全程：Natural Language ToolKit， 诞生于宾夕法尼亚大学，主要面向英文。但其很多模型或者模块都与语种无关，因此当实现了Tokenization 和分词之后，NLTK的很多工具包是可以复用的。

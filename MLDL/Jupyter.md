@@ -1,3 +1,12 @@
+---
+title: Jupyter
+date: 2019-11-30 18:47:58
+categories:
+- MLDL
+tags:
+- MLDL
+---
+
 # Jupyter 的使用
 
 Jupyter 通篇内容有两种格式：Markdown 与 code，Markdown 模式下可以进行 Markdown 的编辑，code 模式下则可以进行代码的运行，这样有机地将代码和注释结合起来。

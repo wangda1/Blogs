@@ -1,3 +1,12 @@
+---
+title: print_function
+date: 2019-11-14 10:24:34
+categories:
+- Python
+tags:
+- Python
+---
+
 # Print Function
 
 *前言：由 Python function 引起的一系列知识点*

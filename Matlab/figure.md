@@ -1,3 +1,12 @@
+---
+title: figure
+date: 2019-11-08 19:09:36
+categories:
+- Matlab
+tags:
+- Matlab
+---
+
 # 绘图  
 
 ## plot  

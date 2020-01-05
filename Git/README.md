@@ -1,3 +1,12 @@
+---
+title: README
+date: 2019-12-16 15:41:26
+categories:
+- Git
+tags:
+- Git
+---
+
 # Github常用命令
 
 今日又重新启用了    github  来管理软件课设，渣渣以前还没用过呢

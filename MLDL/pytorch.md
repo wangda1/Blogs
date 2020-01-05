@@ -1,3 +1,12 @@
+---
+title: pytorch
+date: 2020-01-04 11:55:34
+categories:
+- MLDL
+tags:
+- MLDL
+---
+
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
 
 # PyTorch
