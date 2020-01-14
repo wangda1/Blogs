@@ -56,3 +56,42 @@ array([[1., 0., 0.],
        [0., 1., 0.],
        [0., 0., 1.]])
 ```
+
+### 2.2 `numpy.ndarray.flatten`
+
+`ndarray.flatten(order='C')` 返回一个变换为1-D的副本
+
+- paramenter: 'C'- 行；'F' - 列；'C'是默认的；
+
+Example:
+
+```python
+>>> a = np.array([[1,2], [3,4]])
+>>> a.flatten()
+array([1, 2, 3, 4])
+>>> a.flatten('F')
+array([1, 3, 2, 4])
+```
+
+### 2.3 `numpy.argmax`
+
+`numpy.argmax(a, axis=None, out=None)` 找出 ndarray 中最大值对应的索引
+
+Parameters:
+
+- axis: 默认是将 array flatten，取其最大值对应的索引，当指定 axis = 0时，每一列的最大值 index；当 axis = 1时，每一行的最大值 index
+
+Examples：
+
+```python
+>>> a = np.arange(6).reshape(2,3) + 10
+>>> a
+array([[10, 11, 12],
+       [13, 14, 15]])
+>>> np.argmax(a)
+5
+>>> np.argmax(a, axis=0)
+array([1, 1, 1])
+>>> np.argmax(a, axis=1)
+array([2, 2])
+```
