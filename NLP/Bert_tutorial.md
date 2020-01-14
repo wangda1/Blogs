@@ -25,3 +25,9 @@ BERT requires specifically formatted inputs. For each tokenized input sentence, 
 - Batch size: 16, 32
 - Learning rate (Adam): 5e-5, 3e-5, 2e-5
 - Number of epochs: 2, 3, 4
+
+## 参考
+
+- [google-bert-github](https://github.com/google-research/bert)
+- [一起读bert文本分类代码](https://zhuanlan.zhihu.com/p/56103665)
+- [BERT for dummies — Step by Step Tutorial](https://towardsdatascience.com/bert-for-dummies-step-by-step-tutorial-fb90890ffe03)，对应的 [Jupyter notebook](https://colab.research.google.com/drive/1ywsvwO6thOVOrfagjjfuxEf6xVRxbUNO)
