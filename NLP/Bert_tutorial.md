@@ -26,6 +26,37 @@ BERT requires specifically formatted inputs. For each tokenized input sentence, 
 - Learning rate (Adam): 5e-5, 3e-5, 2e-5
 - Number of epochs: 2, 3, 4
 
+# 2. BertTokenizer 之 `WordPiece` Model
+
+```python
+# Load pre-trained model tokenizer (vocabulary)
+>>> tokenizer = BertTokenizer.from_pretrained('bert-base-uncased'
+>>> text = "Here is the sentence I want embeddings for."
+>>> marked_text = "[CLS] " + text + " [SEP]"
+
+# Tokenize our sentence with the BERT tokenizer
+>>> tokenized_text = tokenizer.tokenize(marked_text)
+
+# Print out the tokens.
+>>> print (tokenized_text
+['[CLS]', 'here', 'is', 'the', 'sentence', 'i', 'want', 'em', '##bed', '##ding', '##s', 'for', '.', '[SEP]']
+```
+
+使用 `BertTokenizer` 进行分词后的序列包含 `##`，这主要的原因是 bert 使用 vocabulary 词典的大小为 3000，为了在训练时能够将所有的英文文章中的单词都能得到编码，就是用了 `WordPiece`。具体：
+
+> Why does it look this way? This is because the BERT tokenizer was created with a WordPiece model. This model greedily creates a fixed-size vocabulary of individual characters, subwords, and words that best fits our language data. Since the vocabulary limit size of our BERT tokenizer model is 30,000, the WordPiece model generated a vocabulary that contains all English characters plus the ~30,000 most common words and subwords found in the English language corpus the model is trained on. This vocabulary contains four things:
+>
+> - Whole words
+> - Subwords occuring at the front of a word or in isolation ("em" as in "embeddings" is assigned the same vector as the standalone sequence of characters "em" as in "go get em" )
+> - Subwords not at the front of a word, which are preceded by '##' to denote this case
+> - Individual characters
+>
+> To tokenize a word under this model, the tokenizer first checks if the whole word is in the vocabulary. If not, it tries to break the word into the largest possible subwords contained in the vocabulary, and as a last resort will decompose the word into individual characters. Note that because of this, we can always represent a word as, at the very least, the collection of its individual characters.
+>
+> As a result, rather than assigning out of vocabulary words to a catch-all token like 'OOV' or 'UNK,' words that are not in the vocabulary are decomposed into subword and character tokens that we can then generate embeddings for.
+>
+> So, rather than assigning "embeddings" and every other out of vocabulary word to an overloaded unknown vocabulary token, we split it into subword tokens ['em', '##bed', '##ding', '##s'] that will retain some of the contextual meaning of the original word. We can even average these subword embedding vectors to generate an approximate vector for the original word. [详见](https://mccormickml.com/2019/05/14/BERT-word-embeddings-tutorial/)
+
 ## 参考
 
 - [google-bert-github](https://github.com/google-research/bert)
