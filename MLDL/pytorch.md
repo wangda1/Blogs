@@ -490,15 +490,37 @@ python 迭代器构造在数据集上。
 *参考：https://zhuanlan.zhihu.com/p/38056115*
 
 ```python
-# 保存整个网络
+# Approach 1
+# 保存整个网络，保存的后缀可以为 .pt/.pth
 torch.save(net, PATH)
-# 保存网络中的参数
-torch.save(net.state_dict(), PATH)
 
-# 模型的加载，对应于以上两种保存的方式
 model_dict = torch.load(PATH)
+
+# Approach 2
+# 保存网络中的参数，
+torch.save(net.state_dict(), PATH)
+model = TheModelClass(*args, **kwargs)
+
 model_dict = model.load_state_dict(torch.load(PATH))
+
+# Approach 3: Save model to resume training later
+# 用于恢复 training 的过程，除了保存 model， 还需要保存 the state of optimizer,epochs,score等。
+state = {
+    'epoch': epoch,
+    'state_dict': model.state_dict(),
+    'optimizer': optimizer.state_dict(),
+    ...
+}
+torch.save(state, filepath)
+
+model.load_state_dict(state['state_dict'])
+optimizer.load_state_dict(state['optimizer'])
+
 ```
+
+对于 approach 2 存在的一些缺点：
+> However in this case, the serialized data is bound to the specific classes and the exact directory structure used, so it can break in various ways when used in other projects, or after some serious refactors.
+
 
 ## 9. 参考
 
