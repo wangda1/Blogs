@@ -47,3 +47,6 @@ d-- 以十进制形式，f--以浮点格式形式，c--以字符格式形式；
 - `set pagination on/off` 在使用backtrace时，在分页时是否停止。
 - `set target-async on/ff` 同步和异步。同步，gdb在输出提示符之前等待程序报告一些线程已经终止的信息。而异步的则是直接返回。
 
+## 参考
+
+- [gdb技巧](https://wizardforcel.gitbooks.io/100-gdb-tips/set-watchpoint.html)
