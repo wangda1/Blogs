@@ -50,3 +50,4 @@ d-- 以十进制形式，f--以浮点格式形式，c--以字符格式形式；
 ## 参考
 
 - [gdb技巧](https://wizardforcel.gitbooks.io/100-gdb-tips/set-watchpoint.html)
+- [gdb 多线程调试](https://blog.csdn.net/liangzhao_jay/article/details/79260047)
