@@ -55,6 +55,7 @@ requests 底层是 http，http 底层是 tcp。
 
 1. [stackoverflow](https://stackoverflow.com/questions/10115126/python-requests-close-http-connection)
 2. [requests docs](https://requests.readthedocs.io/zh_CN/latest/user/advanced.html#session-objects)
+3. [Python: requests 详解超时和重试](https://www.cnblogs.com/gl1573/p/10129382.html)
 
 当在爬虫过程中使用多线程爬取内容时，往往会出现 `too many open files` 的 error,
 
@@ -74,13 +75,47 @@ with requests.get(url, proxies=proxies, headers=headers, timeout=timeout) as r:
 
 > 会话对象让你能够跨请求保持某些参数。它也会在同一个 Session 实例发出的所有请求之间保持 cookie， 期间使用 urllib3 的 connection pooling 功能。所以如果你向同一主机发送多个请求，底层的 TCP 连接将会被重用，从而带来显著的性能提升。 (参见 HTTP persistent connection).
 
+使用 `session` 的目的还是利用 `session` 的 `connection pool` 功能，可以高效地复用链接。
+
 ```python
 # 使用 with-statement
 with requests.Session() as s:
-    s.get('http://google.com')
+    s.get('http://example.com/aaa')
+    s.get('http://example.com/bbb')
+    s.get('http://example.com/ccc')
 
 # 或使用 close() 方法
 s = requests.Session()
-r = s.get('http://httpbin.org/cookies', cookies={'from-my': 'browser'})
+s.get('http://example.com/aaa')
+s.get('http://example.com/bbb')
+s.get('http://example.com/ccc')
 s.close()
+```
+
+- 同时还应该及时清理建立连接较慢和返回较慢的连接，以提高爬虫的效率，主要使用的手段是 `timeout` 与 `max_retries`
+
+    `timeout` 应注意其可以为（连接超时，读取超时）：连接超时指建立连接的最大时间，读取超时指收到服务器回复的最大时间，也可单独设置。
+
+```python
+def get_response(url, proxies, headers, timeout=(5, 10), max_retries=3):
+    """
+    存在连接时间较长阻塞的情况，这里设置 timeout, max_retries
+    :param url: 请求的 url
+    :param proxies:
+    :param header:
+    :param time_out: (connect_time_out, read_time_out)
+    :param max_retries: 重试次数
+    :return:
+    """
+    i = 0
+    while i < max_retries:
+        try:
+            response = requests.get(url, proxies=proxies, headers=headers, timeout=timeout)
+            response_content = response.content
+            response.close()
+            return response_content
+        except requests.exceptions.RequestException as e:
+            log.error('{} times request'.format(i+1) + str(e) + url)
+        i += 1
+    return None
 ```
