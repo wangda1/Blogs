@@ -71,7 +71,7 @@ GPU 中的内存按照访存速度划分：
 
 ## 参考
 
-- [Introduction-to-GPUs.pdf](./CUDA/Introduction-to-GPUs.pdf)
+- [Introduction-to-GPUs.pdf](./CUDA/Introduction-to-GPUs.pdf
 - [CUDA编程](https://blog.csdn.net/junparadox/article/details/50540602)
 - [《CUDA编程教程》 B站视频](https://www.bilibili.com/video/av10436982?from=search&seid=450076380525809673)
 - 《CUDA并行程序设计 GPU编程指南》
