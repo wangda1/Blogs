@@ -8,3 +8,9 @@ tags:
 - C
 - CPP
 ---
+
+# `inline`
+
+## 参考
+
+- [c++中的inline用法](https://www.runoob.com/w3cnote/cpp-inline-usage.html)
