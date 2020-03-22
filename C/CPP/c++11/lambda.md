@@ -25,6 +25,7 @@ lambda 表达式是 c++ 11 引入的新特性，c++中 lambda 表达式的声明
 常用的几种 lambda 表达式
 
 ```c++
+// 使用了返回类型后置的新特性
 [capture list] (params list) -> return type { function body }
 [capture list] (params list) { function body }
 [capture list] { function body }
