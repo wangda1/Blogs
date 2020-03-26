@@ -30,6 +30,9 @@ pip install https://github.com/explosion/spacy-models/releases/download/en_core_
 pip install /Users/you/en_core_web_md-1.2.0.tar.gz
 ```
 
+### 实体抽取的类型
+
+![entity_recognition](./NER工具/spacy实体抽取.png)
 
 ```python
 # coding=utf-8

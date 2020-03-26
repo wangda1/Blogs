@@ -27,4 +27,25 @@ tags:
 
 如何查看？
 
-如果终端没有关闭，`jobs` 可以查看当前终端下的进程。
+如果终端没有关闭，`jobs` 可以查看当前终端下的进程
+
+## 查看内核及操作系统版本
+
+### 查看内核版本
+
+- `uname -a`
+- `uname -r`
+
+关于 Linux 内核版本号的格式：
+
+major.minor.patch-build.desc
+
+### 查看操作系统版本
+
+- `cat /proc/version`
+- `cat /etc/issue`
+- `lsb_release -a` 适用于 Ubuntu/Debian
+
+## `wget` 下载工具
+
+- `wget -b xxx_url` 下载 `xxx_url` 对应的内容并后台下载
