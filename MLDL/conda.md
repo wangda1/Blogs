@@ -10,6 +10,8 @@ tags:
 # Conda
 
 ```python
+# 查看已创建的 python 环境
+conda info --env
 # 查看conda下的所有基本配置
 conda config --show
 # 删除conda的channel
