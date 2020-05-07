@@ -47,6 +47,8 @@ int main()
 
 ### 2. 引用捕获
 
+![引用捕获](./lambda/value_catch.png)
+
 ```c++
 int main()
 {
