@@ -73,3 +73,9 @@ Merge the remote changes (e.g. 'git pull') before pushing again.  See the
 3. `git status` 显示的中文为八进制字符，而不是中文
 
 - `git config --global core.quotepath false` 设置 `core.quotepath` 为 `false`
+
+4. `git clone`之后拉取远程分支：
+
+    1. `git branch -a` 显示远程所有分支；`git checkout origin/branch` 切换至某一远程分支（此时并没有建立本地与之对应的分支）；`git checkout xxx_branch` 建立与远程分支对应的分支；
+    2. `git pull -all` 拉取所有分支到本地；
+    3. `git clone -b xxx_branch https://xxx` 克隆某一分支到本地；

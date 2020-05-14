@@ -61,7 +61,7 @@ torch.max(a, 1)[1] # 返回 a 中每一行最大的元素的索引 index
 
 - `Tensor.permute(a, b, c...)` 可以直接对高纬度矩阵进行转置操作
 - `torch.transpose()` 与 `permute()`作用相同，但只能操作两个维度
-- `Tensor.view()`; `view()` 仅能作用在连续的内存中，如果在调用了 `transpose()` 或 `permute()` 则可导致内存不连续，需要使用 `contiguous()`返回一个连续的内存拷贝；
+- `Tensor.view()`; `view()` 仅能作用在连续的内存中，即将连续的内存变换成所需要的维度，如果在调用了 `transpose()` 或 `permute()` 则可导致内存不连续，需要使用 `contiguous()`返回一个连续的内存拷贝；
 - `torch.reshape()` *version >=0.4*, `== tensor.contiguous().view()`
 
 ```python
@@ -134,6 +134,37 @@ a.size()                # [2, 1]
 a.squeeze().size()      # [2]
 ```
 
+### 0.7 `torch` 上的一些数学运算： `torch.bmm(),torch.mm(),torch.matmul(),torch.mul()`
+
+```python
+# 矩阵之间的相乘，叉乘
+>>> torch.mm(mat1, mat2, out=None)
+>>> torch.matmul(mat1, mat2, out=None)
+# 矩阵的 batch 叉乘运算
+>>> batch1 = torch.randn(10, 3, 4)
+>>> batch2 = torch.randn(10, 4, 5)
+>>> res = torch.bmm(batch1, batch2)
+>>> res.size()
+torch.Size([10, 3, 5])
+# 矩阵各元素之间的相乘，是对应位之间的相乘
+>>> torch.mul(mat1, mat2)
+```
+
+- `torch.sum(input, dim, out=None)`
+
+```python
+import torch
+x = torch.randn(4, 5)
+
+print(x)
+
+print(x.sum(0)) #按列求和
+print(x.sum(1)) #按行求和
+print(torch.sum(x))   #按列求和
+print(torch.sum(x, 0))#按列求和
+print(torch.sum(x, 1))#按行求和
+```
+
 ## 1. Variable(变量)
 
 > Variable 是神经网络计算图里的概念，提供了自动求导的功能。Variable 和 Tensor 本质上没有区别，不过 Variable 会被放入一个计算图中，然后进行前向传播、反向传播、自动求导。
@@ -157,6 +188,10 @@ pritn(x.grad)
 `class torch.nn.Parameter()`
 
 `Variable` 的一种，常被用于模块参数 `module parameter`
+
+`Variable` 已经被废除了。
+
+`parameter` 是类型转换函数，将不可训练的类型`Tensor`转换成可训练的类型`parameter`，并将这个`parameter`绑定到这个 `module` 里面。（`net.parameter()` 中就有这个绑定的 `parameter`，参数优化的时候是可以进行优化的）
 
 `Variable` 与 `Parameter`  的不同：
 

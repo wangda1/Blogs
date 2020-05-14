@@ -3,8 +3,12 @@ title: dynamic_Programming_sum
 date: 2019-11-08 19:09:35
 categories:
 - Algorithm
+- optimization
+- DP
 tags:
 - Algorithm
+- optimization
+- DP
 ---
 
 # Dynamic Programming 总结
