@@ -3,8 +3,12 @@ title: dynamic_Programming0
 date: 2020-01-05 16:05:27
 categories:
 - Algorithm
+- optimization
+- DP
 tags:
 - Algorithm
+- optimization
+- DP
 ---
 
 # Dynamic Programming （动态规划）

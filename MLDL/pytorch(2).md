@@ -58,22 +58,3 @@ Constructs a new tensor of the same data type as self tensor.
 # 直接在 GPU上定义数据，减少cpu的损耗
 >>> torch.cuda.FloatTensor(batch_size, self.hidden_dim, self.height, self.width).fill_(0)
 ```
-
-## 4. `torch` 上的一些数学运算
-
-### 4.1 `torch.bmm(),torch.mm(),torch.matmul(),torch.mul()`
-
-```python
-# 矩阵之间的相乘，叉乘
->>> torch.mm(mat1, mat2, out=None)
->>> torch.matmul(mat1, mat2, out=None)
-# 矩阵的 batch 叉乘运算
->>> batch1 = torch.randn(10, 3, 4)
->>> batch2 = torch.randn(10, 4, 5)
->>> res = torch.bmm(batch1, batch2)
->>> res.size()
-torch.Size([10, 3, 5])
-# 矩阵各元素之间的相乘，是对应位之间的相乘
->>> torch.mul(mat1, mat2)
-```
-

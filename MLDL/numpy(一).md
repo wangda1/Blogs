@@ -1,5 +1,5 @@
 ---
-title: numpy
+title: numpy 系列一
 date: 2020-01-04 11:55:37
 categories:
 - MLDL
@@ -7,7 +7,7 @@ tags:
 - MLDL
 ---
 
-# Numpy 学习
+# Numpy 基础
 
 ```python
 import numpy as np
