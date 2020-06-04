@@ -34,6 +34,8 @@ double real () const { return re; }
 - function 尽量 public, data 尽量 private
 - 当 `static` 用在成员函数中时，没有 `this` 指针，因此只能修改 `static variable`，不能修改 `object variable`
 
+- 兄弟之间互为友元，可以互相访问对方的 private data.
+
 ```c++
 
 ```
@@ -53,7 +55,7 @@ class complex
 }
 
 // 函数模板
-template<class T>
+template<class T> // or template<typename T>
 // template<typename T>
 inline
 const T& min(const T& a, const T& b)
@@ -116,3 +118,101 @@ String& operator=(const String& str);
 ```
 
 显式地定义三大函数的原因是，编译器会自动为 class 添加默认的拷贝构造与拷贝赋值函数，两个函数的行为均为对 object 的逐个字节复制，这样会使 指针 指向同一个地址。析构函数是为了释放指针指向的地址空间，防止内存泄漏。（memory leak）
+
+## `Static`内存布局
+
+见 [CPP-by-hou-jie](./CPP-by-hou-jie.md)
+
+### namespace
+
+- using directive
+
+`using namespace std;`
+
+- using declaration
+
+`using std::cout;`
+
+### 未完待续
+
+    ![C++ToBeContinued](./CPP-by-hou-jie/cpp_to_be_continued.png)
+
+## OOP
+
+### 类和类之间的关系
+
+- Inheritance（继承）
+- Composition（复合）
+- Delegation（委托）
+
+### Composition（复合）`has-a`
+
+反映的是一种 `has-a` 的关系 <--> `Adapter` 模式
+
+![adapter](./CPP-by-hou-jie/cpp_composition_adapter.png)
+
+- composition下的构造与析构函数
+
+由内而外的构造
+由外而内的析构
+
+### Delegation（委托）. Composition By Reference
+
+![c++_delegation](./CPP-by-hou-jie/cpp_delegation.png)
+
+### Inheritance（继承）`is-a`
+
+- `non-virtual`：不可以被重写（覆写）
+- `virtual`：可以被重写（`override`）注意：`override`仅发生在虚函数的过程中；
+- `pure-virtual`：一定需要被覆写
+
+    ![inheritance](./CPP-by-hou-jie/inheritance_template_method.png)
+
+## C++ OOP Advanced Programming（Part II）
+
+### `explicit` keyword
+
+    ![explicit](./CPP-by-hou-jie/explicit.png)
+
+### Conversion Function（转换函数）
+
+实话说，这部分我没看明白
+
+    ![conversion_function](./CPP-by-hou-jie/conversion-function.png)
+
+### pointer-like classes
+
+`pointer-like` class 的主要特点是实现了对 `operator */->` 的重载
+
+- 智能指针
+
+    ![shared_ptr](./CPP-by-hou-jie/pointer_like_shared_ptr.png)
+
+- 迭代器
+
+    ![iterator](./CPP-by-hou-jie/pointer_like_iterator.png)
+
+    ![iterator_imple](./CPP-by-hou-jie/pointer_like_iterator_detail_imple.png)
+
+### function-like classess
+
+`function-like class`即实现了对 `operator ()` 的重载  
+
+![functor](./CPP-by-hou-jie/functor.png)
+
+## template
+
+### class template
+
+
+### function template
+
+
+### member template
+
+## specialization
+
+### specialization
+
+
+### partial specialization（偏特化）

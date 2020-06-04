@@ -9,6 +9,14 @@ tags:
 
 # Latex
 
+## 线下环境
+
+- TeXlive+TeXstuido
+
+## 线上环境
+
+- [overleaf](https://www.overleaf.com/)
+
 ## 基本格式
 
 ```latex
@@ -20,6 +28,7 @@ tags:
 
 - 斜体`\textit{text}`
 - 加粗`\textbf{text}`
+- 角标`\textsuperscript`
 
 ## 新建列表
 
@@ -76,5 +85,6 @@ Reference 的列表
 
 ## 参考
 
+- [Latex环境配置](https://www.jianshu.com/p/3e842d67ada2)
 - [latex插入表格](https://blog.csdn.net/JueChenYi/article/details/77116011)
 - [latex插入图片](https://zhuanlan.zhihu.com/p/32925549)
