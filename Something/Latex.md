@@ -29,6 +29,7 @@ tags:
 - 斜体`\textit{text}`
 - 加粗`\textbf{text}`
 - 角标`\textsuperscript`
+- 换行`\newline` 或 `\\`
 
 ## 新建列表
 
@@ -88,3 +89,4 @@ Reference 的列表
 - [Latex环境配置](https://www.jianshu.com/p/3e842d67ada2)
 - [latex插入表格](https://blog.csdn.net/JueChenYi/article/details/77116011)
 - [latex插入图片](https://zhuanlan.zhihu.com/p/32925549)
+- [常用Latex参考](https://blog.csdn.net/Gentleman_Qin/article/details/79963396)
