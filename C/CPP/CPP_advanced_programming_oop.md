@@ -150,9 +150,9 @@ sizeof(r) == sizeof(x)
 &x == &r
 ```
 
-![reference](./c++11/CPP_2011_new_features/reference_0.png)
+![reference](./CPP_advanced_programming_oop/reference_0.png)
 
-![reference](./c++11/CPP_2011_new_features/reference_1.png)
+![reference](./CPP_advanced_programming_oop/reference_1.png)
 
 ### 类和类之间的关系
 
