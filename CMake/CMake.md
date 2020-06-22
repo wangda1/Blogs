@@ -32,7 +32,7 @@ for open-source projects such as ITK and VTK.
 
 现在开始......
 
-# cmake语言与语法    
+## cmake语言与语法    
 
 一份最简化的  CMakeLists.txt  如下：     
 ```
@@ -79,8 +79,13 @@ ADD_EXECUTABLE(HELLO  ${SRC_LIST})
 
 定义该工程会生成一个名为hello的可执行文件，即最终目标文件，后面是相关的源文件列表
 
+## CMake 生成解决方案
 
+> CMake是一个工程文件生成工具。用户可以使用预定义好的CMake脚本，根据自己的选择（像是Visual Studio, Code::Blocks, Eclipse）生成不同IDE的工程文件。这允许我们从源码里创建一个Visual Studio工程文件，之后进行编译。
 
+可以选择 GUI 启动 CMake，CMake需要一个源代码目录和一个存放编译结果的目标文件目录。可以新建一个 build 文件夹选中作为目标目录。
+
+步骤: `Configure` --> 选择工程生成器 `Visual Studio xx` 及其它编译选项进行配置 --> `Configure` 保存设置 --> `Generate` 生成工程文件在 `build` 文件夹下。
 
 ## Tips 
 
@@ -89,28 +94,6 @@ ADD_EXECUTABLE(HELLO  ${SRC_LIST})
 
 2.指令是**大小写无关的**，不过一般的指令都是大写的
 
+## 参考
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+- [cmake](https://learnopengl-cn.readthedocs.io/zh/latest/01%20Getting%20started/02%20Creating%20a%20window/)
