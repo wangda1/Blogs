@@ -29,7 +29,7 @@ RNN: Hard to parallel,
 
 **Attention is all you need!**
 
-不需要 RNN/CNN，所需的仅为 attention，输入为 seq 输出为 seq
+**不需要 RNN/CNN，所需的仅为 attention，输入为 seq 输出为 seq**
 
 ![attention](Transformer/transformer4.png)
 
@@ -37,15 +37,28 @@ RNN: Hard to parallel,
 
 ![atttention](Transformer/transformer6.png)
 
-q 代表的是查询的 weight；k 代表的是被匹配的 weight
+q 代表的是查询的 weight；k 代表的是被匹配的 weight，v 代表的当前位置的表示向量
+
+从矩阵的并行运算来考虑整个运算过程是这样的：
+
+![parallel_compute_transformer](Transformer/parallel_compute_transformer.png)
 
 ### 3. multi-head self-attention
 
+为什么会引入 `multihead self-attention`：
+
+不同的 head 可关注不同层面的信息，以`2-head-self-attention`为例，1-head可能更关注 local 层面的信息，2-head 可能更关注 global 层面的信息。
+
 多抽头的 self-attention：
+
+这里对每个 a 得到多个 b_i_n 可以通过一个矩阵 transform 进行降维。
 
 ![atttention](Transformer/transformer7.png)
 
-考虑进位置信息的 self-attention
+从上述可以看出，上述的 seq2seq 结构并没有考虑位置信息，有点像 BOW 一样，所以针对其进行改进，考虑进位置信息 `self-attention`
+
+在 a_i 中加入 e_i（并不是从 data 中学习得到，人为设置）；
+关于为何是把 e_i 直接相加，而不是 concatenate：将 e_i concatenate 上 a_i，乘上 W，经过矩阵分解运算，可以发现最终和直接加上一个vector的效果是一样的。
 
 ![attention](Transformer/transformer8.png)
 

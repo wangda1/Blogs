@@ -33,6 +33,7 @@ tags:
 
 ## `static_cast`
 
+仅限于这两种转换：
 - 类层次结构中基类和派生类之间的指针或引用的转换。`up_cast` 是安全的，`down_cast` 是不安全的
 - 基本数据类型之间的转换，如：int 与 char等；
 - > c++ primer: c++ 的任何隐式转换都是通过 `static_cast` 实现的
@@ -45,6 +46,9 @@ tags:
 
 ## `dynamic_cast`
 
+用于父子类之间指针的转换：
+- 当从子类到基类的指针转换，`dynamic_cast` 成功转换，没有什么运行异常，且达到预期效果；
+- 从基类到子类的转换，`dynamic_cast`在转换时没有报错，但输出一个 `nullptr`，`dynamic_cast` 在程序运行过程中类转换进行了检查“运行期类型信息”（RTTI）
 
 ## `reinterpret_cast`
 

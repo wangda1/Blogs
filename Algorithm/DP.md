@@ -39,14 +39,29 @@ tags:
 15. LC1335
 16. LC1326
 17. LC42
-18. LC1320
-19. LC1310
+18. LC1320 Minimum Distance to Type a Word Using Two Fingers
+19. LC1310 XOR Queries of a Subarray
 20. LC1312  Minimum Insertion Steps to Make a String Palindrome
 - 普通DP？
 21. LC5 Longest Palindromic Substring
 - `Brute Force`带来较多的重复比较（判断 Palindromic 的时候）
 - 采用 `(l,r)是Palindromic && s[l-1]==s[r+1]`遍历选取中心点 i，得到最大的 `len`
+22. LC1143 Longest Common Subsequence
+- 状态：`f[i][j]` 
+```c++
+if(text1[i-1] == text2[j-1])
+    f[i][j] = max({f[i-1][j-1]+1, f[i-1][j], f[i][j-1]});
+else
+    f[i][j] = max(f[i-1][j], f[i][j-1]);
+```
+
 ## 总结
+
+### 动态规划
+
+### 两个问题
+- 状态
+- 转移
 
 ### 记忆化递归与DP
 
