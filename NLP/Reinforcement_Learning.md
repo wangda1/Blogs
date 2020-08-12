@@ -19,16 +19,36 @@ tags:
 
 ![Policy_based Model](Reinforcement_Learning/policy_based_model.png)
 
+强化学习的两个重要组成部分是：
+
+- Agent
+  - s: observation
+  - a: execute action
+  - r: Receive scalar reward
+- Environment
+
 ## 分类
 
 ![Reinforcement_Learning](Reinforcement_Learning/RL_category.png)
 
 Reinforcemnet Learning：
-- Model-based, 需要对环境进行建模
-  - Policy-based, learn Critic
-  - Value-based, learn Actor
-- Model-free，不需要对环境进行建模
 
+### Model-based v.s. Model-free
+
+- Model-based, 需要对环境进行建模
+  可以通过想象来选择使得Reward最大的Action
+  - Policy-based, learn Actor，如：Policy Gradients
+  - Value-based, learn Critic，如：Q learning，Sarsa
+- Model-free，不需要对环境进行建模
+  - Q Learning
+  - Sarsa
+  - Policy Gradients
+
+### 回合更新与单步更新
+
+### 在线学习与离线学习
+
+离线学习可以读谱，不必边玩边学习
 ## Policy-based Approach
 
 同 `supervised learning` 方法需要一个 `Loss function` 来评价 Actor 的好坏，这里需要评价Actor的方法是：使 Reward 最大的方法

@@ -61,6 +61,10 @@ GPU 中的内存按照访存速度划分：
 
 ![cuda_sw_hw](CUDA/cuda_sw_hw.png)
 
+### 2.4 SIMD与SIMT之间的区别
+
+其实还是不太明白 `SIMT` 与 `SIMD`之间的区别
+
 ## 3. CUDA的编程模型
 
 ### 3.1 CUDA 的算法框架
