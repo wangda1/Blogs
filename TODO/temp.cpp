@@ -1,41 +1,24 @@
-#include <iostream>
-#include <algorithm>
-#include <queue>
-#include <vector>
-
-using namespace std;
-
-const int N = 100010;
-struct Range {
-    int l,r;
-    bool operator < (const Range& W) const {
-        return l<W.l;
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    bool isBalanced(TreeNode* root) {
+        // 递归,-1代替子树不平衡
+        int res = helper(root);
+        return res != -1;
     }
-}range[N];
-
-int main() {
-    int n;
-    cin>>n;
-    for(int i=0; i<n; ++i) {
-        int a,b;
-        cin>>a>>b;
-        range[i] = {a, b};
+    int helper(TreeNode* root) {
+        if(!root) return 0;
+        int lh = helper(root->left);
+        int rh = helper(root->right);
+        if(rh == -1 || lh == -1 || abs(rh-lh) > 1) return -1;
+        return max(rh, lh)+1;
     }
-    sort(range, range+n);
-    // 这里使用小根堆保存当前每个分组中的最大右端点
-    priority_queue<int, vector<int>, greater<int>> q;
-    int res = 0;
-    for(int i=0; i<n; ++i) {
-        if(q.empty() || range[i].l <= q.top()) {
-            q.push(range[i].r);
-            res++;
-
-        }
-        else if(range[i].l > q.top()) {
-            q.pop();
-            q.push(range[i].r);
-        }
-    }
-    cout<<res;
-    return 0;
-}
+};

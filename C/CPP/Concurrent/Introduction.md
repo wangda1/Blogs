@@ -167,6 +167,39 @@ cond.wait(locker);
 
 ### Future, Promise and async()
 
+`std::future` 是一个模板类，一个channel用于接收未来将要获得的结果
+- 使用`get()`获得返回值，但仅能调用一次
+- 使用`std::move()`移动
+
+`std::promise` 是一个模板类，用于预设一个值，可与`std::future`配合使用
+
+`std::async()` 异步调用的函数，参数：
+- 第一个参数：`std::launch::async`会新起一个thread，`std::launch::deferred`不会新起一个thread，直到调用 `get()` 才执行
+```c++
+// std::future
+std::future<int> fu = std::async([](){ return 2; });
+x = fu.get();
+
+// std::promise
+std::promise<int> p;
+std::future<int> f = p.get_future();
+
+std::future<int> fu = std::async(std::launch::async, factorial, std::ref(f));
+
+p.set_value(4);
+
+// shared_future
+// 当有多个 future ，不能进行共享，可与使用 shared_future
+std::promise<int> p;
+std::future<int> f = p.get_future();
+std::shared_future<int> sf = f.share();
+
+std::future<int> fu = std::async(std::launch::async, factorial, sf);
+std::future<int> fu = std::async(std::launch::async, factorial, sf);
+
+p.set_value(4);
+
+```
 ## little tricks
 
 - `std::thread::hardware_concurrency()`可以获得机器的最大线程数量。
