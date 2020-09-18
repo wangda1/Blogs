@@ -12,8 +12,7 @@ tags:
 
 # 装饰器 （Decorator）
 
-装饰器的主要依据是**python中函数是一个对象，函数对象可以赋值给变量，通过变量调用函数**
-
+装饰器的主要依据是**python中函数是一个对象，函数对象可以赋值给变量，通过变量调用函数**，主要功能是在代码运行期间动态增加函数功能，但又不改变原函数的定义。
 
 
 ## 不带参数的装饰器
@@ -60,9 +59,6 @@ def set_func(func):
         print("执行次数",num[0])
         return func(*args, **kwargs)
     return call_func
-————————————————
-版权声明：本文为CSDN博主「宁致乐水」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
-原文链接：https://blog.csdn.net/qq_31603575/article/details/80011287
 ```
 ## reference
 

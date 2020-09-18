@@ -81,6 +81,10 @@ Merge the remote changes (e.g. 'git pull') before pushing again.  See the
     2. `git pull -all` 拉取所有分支到本地；
     3. `git clone -b xxx_branch https://xxx` 克隆某一分支到本地；
 
+5. `git blame && git show` 查看某行代码的修改历史
+   - `git blame file_name` 查看某行代码是谁写的，在哪个commit中提交的
+   - `git show commitID` 查看本次提交的所有内容 
+
 ## 分支的管理
 
 ```git
@@ -140,6 +144,13 @@ git stash pop stash@{1}
 git stash drop [stash_id]   // 删除存储的进度
 
 git stash clear             // 删除所有存储的进度
+```
+
+git 代理的设置
+
+```git
+git config --global http.proxy 'socks5:://127.0.0.1:1081'
+git config --global https.proxy 'socks5:://127.0.0.1:1081'
 ```
 
 ref: [廖雪峰的git教程](https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000)
