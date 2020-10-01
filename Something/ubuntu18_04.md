@@ -119,7 +119,8 @@ Categories=Development
 4. 将 /dev/sdb1 挂载到 /home
    `mount /dev/sdb1 /home`
 5. 将挂载命令写到 `\etc\fstab`
-   
+   `/dev/sdb1   /home   ext4    defaults    0   0`
+
 ## FAQ
 
 ### 快捷键不work
