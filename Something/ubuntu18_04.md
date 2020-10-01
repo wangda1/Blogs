@@ -21,6 +21,8 @@ ubuntu 18.04 系统代号：bionic
 
 ubuntu 的桌面环境大概有：KDE，gnome，Unity三种，ubuntu 18.04 默认桌面环境为 gnome
 
+查看当前桌面环境：`echo $XDG_CURRENT_DESKTOP`
+
 ### 工具安装
 
 ```shell
@@ -66,6 +68,8 @@ sudo apt install sierra-gtk-theme       # point releases
 - sublime text 编辑器
 - Chrome 浏览器
 - VS code
+- tilix 终端模拟器
+- thunderbird 邮箱客户端
 - ...
 
 ### 设置桌面启动器
@@ -101,3 +105,23 @@ Categories=Development
 
 或许还需要重启下 Gnome `alt` + `F2`，`r` + `Enter`
 
+### 磁盘挂载
+
+一般会选择将一块大的磁盘挂载到 `/home` 目录
+
+1. 先在其他目录下新建一个备份目录，将要挂载的盘挂载到该新建目录上
+   `mount /dev/sdb1 /new`
+2. 将现有目录的所有文件（包含隐含文件）复制到新建目录：
+   `cp -r /home/. /new` 
+   （注：删除一个目录下的所有文件，包括隐含文件：先删除非隐藏文件： rm -rf /home/\*；再删除隐藏文件： rm -rf /home/.*）
+3. 将 /dev/sdb1 与 /new 目录取消挂载，可能出现 target busy 的情况
+   `umount /dev/sdb1 -fl`
+4. 将 /dev/sdb1 挂载到 /home
+   `mount /dev/sdb1 /home`
+5. 将挂载命令写到 `\etc\fstab`
+   
+## FAQ
+
+### 快捷键不work
+
+键盘快捷键的设置在 settings -> Devices -> Keyboard 中，可以在这里更改已有的快捷键或新建快捷键选项
