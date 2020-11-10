@@ -126,3 +126,14 @@ Categories=Development
 ### 快捷键不work
 
 键盘快捷键的设置在 settings -> Devices -> Keyboard 中，可以在这里更改已有的快捷键或新建快捷键选项
+
+### 出现图形界面循环登录
+
+问题排查，通过 tty 登录
+
+```shell
+ctrl+alt+F1 进入 tty
+#输入账户名和密码登入
+startx  # 启动 Xserver
+ls -l ~/.Xauthority # 查看 Xauthority 对应的权限信息是否为需要登录的账户
+```
