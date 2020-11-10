@@ -50,17 +50,20 @@ sudo apt install sierra-gtk-theme       # point releases
 
 ![tweaks_tool](./ubuntu18_04/tweaks_screen_capiture.png)
 
+注：Shell 的更改需要打开 Extensions -> User Themes 开关
+
 我的设置主要参考：[ubuntu18.04美化总结](https://www.jianshu.com/p/6ef16e3b0a3e)
 
 ## 输入法
 
-- 安装 fcitix 输入框架（ubuntu默认的是ibus，比较难用）
-`sudo apt install fcitix`
+- 安装 fcitx 输入框架（ubuntu默认的是ibus，比较难用）
+`sudo apt install fcitx`
 - 下载安装 搜狗输入法
-- 在系统设置（右上角的电源选项中）-> Region & language -> 安装中文语言-> 将输入法系统设置为 fcitix
+- 在系统设置（右上角的电源选项中）-> Region & language -> 安装中文语言-> 将输入法系统设置为 fcitx
 ![language support](./ubuntu18_04/language_support.png)
 
-- 重启电脑，选择屏幕窗口上方的 fcitix 的键盘图标，添加 Sogou Pin 输入法即可
+- 重启电脑，选择屏幕窗口上方的 fcitx 的键盘图标，添加 Sogou Pin 输入法即可
+- 注：添加搜狗输入法时需要取消 `only current language` 选项，搜索 `sogou` 而不是 `sougou` ！！！
 
 ## 其它常用软件
 
@@ -119,7 +122,31 @@ Categories=Development
 4. 将 /dev/sdb1 挂载到 /home
    `mount /dev/sdb1 /home`
 5. 将挂载命令写到 `\etc\fstab`
-   `/dev/sdb1   /home   ext4    defaults    0   0`
+   `/dev/sdb1   /home   ext4    defaults    0   0`\
+
+### 管理磁盘分区
+
+```shell
+fdisk       //  磁盘相关操作
+df          //  系统分区挂载信息
+mount       //  挂载分区
+umount      //  卸载分区
+mkfs.ext4   //  格式化分区
+```
+
+#### 新增/删除分区
+
+- 新增分区
+
+    `fdisk /dev/sdb` -> `n` （新建分区） -> `p/e`（主分区/扩展分区） -> `_enter_` （柱面起始值，回车确认） -> `_enter_`（分区大小） -> `w` （写入磁盘分区表）
+- 格式化分区
+
+    `mkfs.ext4  /dev/sdb1`  # 格式化成 ext4 文件系统
+
+- 删除分区
+    删除之前，应当先使用 `umount` 卸载对应的分区
+    `fdisk /dev/sdb` -> `d`（删除分区） -> `_num_` （删除的分区号） -> `w`（写入磁盘分区表）
+
 
 ## FAQ
 
