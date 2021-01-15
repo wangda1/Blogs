@@ -19,6 +19,22 @@ tags:
 
 - `F1` / `Ctrl+shift+P` 打开命令面板，可以执行VSCode的任何命令
 
+## 4. 调试
+
+使用 VScode 调试程序的步骤（以Python为例）
+
+- 选择解释器（当使用Conda时）：`ctrl+shift+P` -> `Python: Select Interpreter` -> 选择要使用的 Conda 环境
+- 修改 launch.json 文件（该文件包含了Project的设置）
+  - 加入运行参数使用： `args`
+  - 切换到当前文件所在目录：`cwd`
+  ```json
+  "cwd": "${fileDirname}",
+  "args": [
+      "--mode", "train",
+      "--dataset_name", "MSRA"
+  ]
+  ```
+- 设置断点，开始调试
 ## Q&A
 
 ### 3.1 在`Java`中不能导入第三方的库，出现　`xxx unresolve`　的问题
