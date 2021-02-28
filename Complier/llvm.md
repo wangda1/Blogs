@@ -20,6 +20,17 @@ Clang项目包括Clang前端和Clang静态分析器等
 
 ![源文件的编译过程](./llvm/compile_process.png)
 
+Clang 与 GCC 相比的优点：
+
+- 编译速度快:在某些平台上，Clang的编译速度显著的快过GCC(Debug模式下编译OC速度比GGC快3倍)
+- 占用内存小:Clang生成的AST所占用的内存是GCC的五分之一左右
+- 模块化设计:Clang采用基于库的模块化设计，易于 IDE 集成及其他用途的重用
+- 诊断信息可读性强:在编译过程中，Clang 创建并保留了大量详细的元数据 (metadata)，有利于调试和错误报告
+- 设计清晰简单，容易理解，易于扩展增强
+
+Clang 和 LLVM 的关系
+
+![LLVM_Clang](./llvm/llvm_clang.jpg)
 ## LLVM IR表示
 
 - IR
@@ -29,6 +40,16 @@ Clang项目包括Clang前端和Clang静态分析器等
 - Pass：
     > The passes, which transform IR to IR. In ordinary circumstances, passes usually optimize the code: that is, they produce an IR program as output that does the same thing as the IR they took as input, except that it’s faster. This is where you want to hack. Your research tool can work by looking at and changing IR as it flows through the compilation process.
 
+## LLVM 架构
+
+![LLVM-arch](./llvm/llvm_arch.jpg)
+- 不同的前端后端使用统一的中间代码LLVM Intermediate Representation (LLVM IR)
+- 如果需要支持一种新的编程语言，那么只需要实现一个新的前端
+- 如果需要支持一种新的硬件设备，那么只需要实现一个新的后端
+- 优化阶段是一个通用的阶段，它针对的是统一的LLVM IR，不论是支持新的编程语言，还是支持新的硬件设备，都不需要对优化阶段做修改
+- 相比之下，GCC的前端和后端没分得太开，前端后端耦合在了一起。所以GCC为了支持一门新的语言，或者为了支持一个新的目标平台，就 变得特别困难
+- LLVM现在被作为实现各种静态和运行时编译语言的通用基础结构(GCC家族、Java、.NET、Python、Ruby、Scheme、Haskell、D等)
+
 ## LLVM 使用
 
 ## 参考
@@ -36,3 +57,6 @@ Clang项目包括Clang前端和Clang静态分析器等
 - [LLVM for Grad Students](https://www.cs.cornell.edu/~asampson/blog/llvm.html)
 - [Clang-LLVM](https://juejin.im/post/5a30ea0ff265da43094526f9)
 - [LLVM/clang在ubuntu下的安装](https://www.zhihu.com/question/60299862)
+- 深入理解 LLVM https://www.jianshu.com/p/1367dad95445
+- LLVM IR Tutorial https://llvm.org/devmtg/2019-04/slides/Tutorial-Bridgers-LLVM_IR_tutorial.pdf
+- LLVM Pass API https://llvm.org/docs/ProgrammersManual.html
