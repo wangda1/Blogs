@@ -47,6 +47,12 @@ tags:
 - 按照以下步骤进行： a. 在工程目录下创建　`lib`　文件夹，放入`.jar` 文件 　b. 新建 `.classpath` 在其中　`<classpathentry kind="lib" path="lib/xxxx.jar"/>`
 - 以上均不能解决问题，则　`F1` - input `Clean` - `clean workspace`
 
+### 3.2 如何在 VSCode 中调试 python 程序
+
+- 先选择Python interpreter:`F1` -> `Python: Select Interpreter` -> 选择 Conda 虚拟环境/主机上已存在的环境
+- 在VScode的左侧边栏 -> Run 图标 -> 打开调试选项
+- VScode 的上边栏 -> `Run` -> `Start Debugging` 打开调试的按钮选项，进行调试即可
+
 ## References
 
 - https://nshen.net/article/2015-11-20/vscode/
