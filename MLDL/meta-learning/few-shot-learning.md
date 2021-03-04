@@ -34,6 +34,12 @@ Support Set
 - k-way: the support set has k classes
 - n-shot: every class has n samples
 
+训练过程（Few-Shot Learning, FSL的 episode 学习）：
+
+> 每次训练（spisode）都会采样得到不同 meta-task。总体上来看，训练包含了不同的类别组合，这种机制使得模型学会不同 meta-task 中的共性部分，比如如何提取样本特征级比较样本相似等，忘掉 meta-task 中 task 相关部分。通过这种学习机制学习到的模型。在面对未见过的 meta-task 时，也能较好地进行分类。
+
+> meta training 阶段构建一系列 meta-task 来让模型学习如何根据 support set 预测 batch set 中的样本的标签；meta testing 阶段的输入数据的形式与训练阶段一致（K-way, N-shot），但是会在全新的类别上构建 support set 和 batch set
+
 ## Few-Shot Learning 的基本思想
 
 1. 基于 **High-Resources Classes** 部分的数据集训练 Pre-train Model
@@ -51,7 +57,9 @@ Support Set
 
     ![Omniglot](./few-shot-learning/Dataset1-1.png)
 
-## Few-Shot 的常用 Model-- Siamese Network
+    ![MiniImage](./few-shot-learning/Dataset2.png)
+
+## Few-Shot 的常用 Model, Metric-Based -- Siamese Network
 
 计算两两直接的相似度
     ![siamese-network](./few-shot-learning/siamese-network1.png)
