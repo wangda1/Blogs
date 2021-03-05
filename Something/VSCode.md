@@ -53,6 +53,15 @@ tags:
 - 在VScode的左侧边栏 -> Run 图标 -> 打开调试选项
 - VScode 的上边栏 -> `Run` -> `Start Debugging` 打开调试的按钮选项，进行调试即可
 
+### 3.3 VSCode 使用`Remote-SSH`不能进行远程调试 python 代码
+
+解决思路：关闭并清理已有的 local extensions，重新安装 local 和 remote extensions.
+
+1. 卸载 Python extension
+2. 关闭所有打开的 VSCode 窗口
+3. 删除 (windows) `%USERPROFILE%/.vscode/extensions` 或者 (Linux) `~/.vscode/extensions` 下的 所有以 `ms-python.python*` 开头的文件夹
+4. 启动 VSCode 安装 Python extensions.
+
 ## References
 
 - https://nshen.net/article/2015-11-20/vscode/
