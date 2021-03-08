@@ -37,8 +37,10 @@ Support Set
 训练过程（Few-Shot Learning, FSL的 episode 学习）：
 
 > 每次训练（spisode）都会采样得到不同 meta-task。总体上来看，训练包含了不同的类别组合，这种机制使得模型学会不同 meta-task 中的共性部分，比如如何提取样本特征级比较样本相似等，忘掉 meta-task 中 task 相关部分。通过这种学习机制学习到的模型。在面对未见过的 meta-task 时，也能较好地进行分类。
-
+>
 > meta training 阶段构建一系列 meta-task 来让模型学习如何根据 support set 预测 batch set 中的样本的标签；meta testing 阶段的输入数据的形式与训练阶段一致（K-way, N-shot），但是会在全新的类别上构建 support set 和 batch set
+>
+> 摘自 https://zhuanlan.zhihu.com/p/61215293
 
 ## Few-Shot Learning 的基本思想
 
@@ -91,4 +93,5 @@ Support Set
 
 参考：
 
-- https://github.com/wangshusen/DeepLearning
+- CS853 Deep Learning by wangshusen: https://github.com/wangshusen/DeepLearning
+- 小样本学习综述：https://zhuanlan.zhihu.com/p/61215293
