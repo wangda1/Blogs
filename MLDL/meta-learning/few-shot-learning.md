@@ -3,8 +3,10 @@ title: Few-Shot Learning
 date: 2021-03-02 15:32:00
 categories:
 - MLDL
+- meta-learning
 tags:
 - MLDL
+- few-shot
 ---
 
 # Few Shot Learning
@@ -88,6 +90,15 @@ Support Set
 ### Trick3
 
 ![trcik3](./few-shot-learning/fine-tune-trick3.png)
+
+
+## TapNet
+
+论文参考：《Few-shot Slot Tagging with Collapsed Dependency Transfer and Label-enhanced Task-adaptive Projection Network Yutai》
+
+这里作者采用 TapNet（Task-Adaptive-Projection Network 来用于 NER 任务，主要的思想还是利用 linear-CRF 进行 NER：
+- transition matrix: abstract transition matrix，由 training dataset 训练得出
+- emission matrix: 由 task-adaptive-projection network 得到 token 与 support set 中的 similarity 计算得到 emission score
 
 参考：
 
