@@ -89,6 +89,20 @@ Ubuntu on Wayland
 Xfce Session
 ```
 
+## Linux 中的两套网络连接管理方案
+
+- `/etc/network/interfaces（/etc/init.d/networking）`
+- `Network-Manager`
+
+两套方案是冲突的
+- 第一个适合于没有 X 的环境，如服务器等网络连接不发生变化的场合
+- 第二个适合于有桌面的环境，如笔记本等网络环境经常变化的场合
+
+他们两个为了避免冲突，又能共享配置，就有了下面的解决方案：
+
+1. 当Network-Manager发现/etc/network/interfaces被改动的时候，则关闭自己（显示为未托管），除非managed设置成真。
+2. 当managed设置成真时，/etc/network/interfaces，则不生效。
+
 ## 参考
 
 - https://zhuanlan.zhihu.com/p/272740410
