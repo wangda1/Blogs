@@ -100,3 +100,6 @@ server {
 ## Nginx 配置实例 - 高可用
 
 高可用是采用主从模式的方式，结合 `keepalived` 虚拟 IP 实现高可用，主要的配置在 `keepalived` 软件上，配置文件位于 `/etc/keepalived/keepalived.conf`
+
+## 参考
+- 尚硅谷Nginx教程：https://www.bilibili.com/video/BV1zJ411w7SV?p=1
