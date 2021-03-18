@@ -28,19 +28,75 @@ tags: Nginx
 
 1. `http`
     -   `server`
-        - `location`
+        - `location` 配置URL中的资源地址
+            - `proxy_pass` 配置反向代理地址
             - `root`
             - `index`
             - `autoindex`
-    -   `upstream`
+    -   `upstream` 配置负载均衡所需的上游 server
 
 
 ## Nginx 配置实例 - 反向代理
 
+```xml
+server {
+    listen 9001;
+    server_name 192.168.17.129;
+
+    location ~ /edu/ {
+        proxy_pass http://127.0.0.1:8080;
+    }
+
+    location ~ /vod/ {
+        proxy_pass http://127.0.0.1:8081;
+    }
+}
+```
+
 ## Nginx 配置实例 - 负载均衡
+
+```xml
+upstream myserver {
+    server 192.168.17.129:8080;
+    server 192.168.17.129:8081;
+}
+
+server {
+    listen 80;
+    server_name 192.168.17.129;
+
+    location / {
+        proxy_pass http://myserver;
+        root html;
+        index index.html index.htm;
+    }
+}
+```
+
+切换的几种策略：
+1. 轮询
+2. weight
+3. ip_hash
+4. fair
 
 ## Nginx 配置实例 - 动静分离
 
+```xml
+server {
+    listen 9001;
+    server_name 192.168.17.129;
+
+    location /www/ {
+        root /data/;
+        index index.html index.htm;
+    }
+
+    location /image/ {
+        root /data/;
+        autoindex on;
+    }
+}
+```
 ## Nginx 配置实例 - 高可用
 
-高可用是采用主从模式的方式，结合 `keepalived` 虚拟 IP 实现高可用
+高可用是采用主从模式的方式，结合 `keepalived` 虚拟 IP 实现高可用，主要的配置在 `keepalived` 软件上，配置文件位于 `/etc/keepalived/keepalived.conf`
