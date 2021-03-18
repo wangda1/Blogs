@@ -147,7 +147,34 @@ mkfs.ext4   //  格式化分区
     删除之前，应当先使用 `umount` 卸载对应的分区
     `fdisk /dev/sdb` -> `d`（删除分区） -> `_num_` （删除的分区号） -> `w`（写入磁盘分区表）
 
+### systemd 与 `systemctl`
 
+`systemctl` 的两大主要功能：
+- 控制 systemd 系统
+- 管理系统上运行的服务
+
+### `systemd` 与 1 号进程
+
+![PID_1](./ubuntu18_04/init_pid_1.png)
+
+可以看到 systemd 是 `/sbin/init` 的软链接，因此是 PID=1 的 init 进程
+
+### 常用命令
+
+- `systemctl list-units`， 查询所有的 units（aka daemons 或在 win 中 services）就是后台运行的守护进程
+   - `systemctl list-units | grep service`
+- `systemctl status ssh.service` 查看
+   ![status service](./ubuntu18_04/status_service.png)
+   - Loaded: enabled，开启自启动
+      - `systemctl enable/disable ssh.service`
+   - Active: active(running)，是否正在运行
+      - `systemctl start/restart/stop ssh.service`
+   - 下方的 log 是启动运行的 log
+- `systemctl reboot/poweroff/suspend` 开/关机
+- `journalctl` 查看 units 日志
+   - `journalctl -b` 查看自 boot 以来的启动日志
+
+参考：https://www.cnblogs.com/sparkdev/p/8472711.html
 ## FAQ
 
 ### 快捷键不work
