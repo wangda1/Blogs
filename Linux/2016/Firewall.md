@@ -47,6 +47,11 @@ sudo ufw allow from 123.45.67.89/24
 
 # 基于 IP 和 port 进行配置规则
 sudo ufw allow from 123.45.67.89 to any port 22 proto tcp
+
+# 删除规则
+sudo ufw delete allow 22        # 按添加规范删除规则
+sudo ufw status numberd         # 先找到规则对应的编号
+sudo ufw delete [number]        # 再删除对应编号的规则
 ```
 参考： https://linux.cn/article-8087-1.html
 
