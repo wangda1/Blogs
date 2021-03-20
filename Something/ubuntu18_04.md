@@ -126,12 +126,17 @@ Categories=Development
 
 ### 管理磁盘分区
 
-```shell
-fdisk       //  磁盘相关操作
-df          //  系统分区挂载信息
-mount       //  挂载分区
-umount      //  卸载分区
-mkfs.ext4   //  格式化分区
+```bash
+fdisk       #  磁盘相关操作
+df          #  系统分区挂载信息，查看已使用磁盘信息
+df -h
+du          #  系统分区挂载信息，查看空闲磁盘信息
+du -s /* | sort -nr  #  查看哪个目录占用的空间大
+du -s /home/* | sort -nr   #  逐层查找哪个目录占用的空间大
+
+mount       #  挂载分区
+umount      #  卸载分区
+mkfs.ext4   #  格式化分区
 ```
 
 #### 新增/删除分区
@@ -175,6 +180,7 @@ mkfs.ext4   //  格式化分区
    - `journalctl -b` 查看自 boot 以来的启动日志
 
 参考：https://www.cnblogs.com/sparkdev/p/8472711.html
+
 ## FAQ
 
 ### 快捷键不work
