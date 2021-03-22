@@ -144,13 +144,18 @@ mkfs.ext4   #  格式化分区
 - 新增分区
 
     `fdisk /dev/sdb` -> `n` （新建分区） -> `p/e`（主分区/扩展分区） -> `_enter_` （柱面起始值，回车确认） -> `_enter_`（分区大小） -> `w` （写入磁盘分区表）
+
 - 格式化分区
 
     `mkfs.ext4  /dev/sdb1`  # 格式化成 ext4 文件系统
 
 - 删除分区
-    删除之前，应当先使用 `umount` 卸载对应的分区
+
+   删除之前，应当先使用 `umount` 卸载对应的分区
     `fdisk /dev/sdb` -> `d`（删除分区） -> `_num_` （删除的分区号） -> `w`（写入磁盘分区表）
+- 格式化分区
+
+   `mkfs.ext4 /dev/sdb`
 
 ### systemd 与 `systemctl`
 
