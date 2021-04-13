@@ -1,8 +1,10 @@
 ---
 title: Nginx
 date: 2021-03-15 17:47:10
-categories: Cloud Computing
-tags: Nginx
+categories: 
+- Cloud Computing
+tags: 
+- Nginx
 ---
 
 # Nginx
